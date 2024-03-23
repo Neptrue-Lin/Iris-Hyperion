@@ -1,6 +1,7 @@
 package org.neptrueworks.irishyperion.application.user;
 
 import lombok.AllArgsConstructor;
+import org.neptrueworks.irishyperion.application.user.identity.IdentifierClaimedException;
 import org.neptrueworks.irishyperion.domain.accounting.UserAccount;
 import org.neptrueworks.irishyperion.domain.accounting.UserAccountFactory;
 import org.neptrueworks.irishyperion.domain.accounting.UserAccountRepository;

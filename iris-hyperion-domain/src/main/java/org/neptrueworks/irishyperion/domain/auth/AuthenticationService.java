@@ -1,7 +1,5 @@
 package org.neptrueworks.irishyperion.domain.auth;
 
-import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
-
-public interface AuthenticationService {
-    UserIdentifier authenticate(AuthorizationCredential credential);
+public abstract class AuthenticationService {
+    public abstract void authenticate(AuthorizationCredential credential);
 }

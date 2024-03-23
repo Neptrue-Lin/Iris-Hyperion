@@ -10,6 +10,5 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class AuthorizationFailedEvent extends DomainEvent {
     private final AuthorizationIdentifier identifier;
-    private final AuthorizationCredential credential;
     private final LocalDateTime failedAt;
 }

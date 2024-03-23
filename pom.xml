@@ -2,14 +2,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.4</version>
+    </parent>
     <groupId>org.neptrueworks</groupId>
     <artifactId>iris-hyperion</artifactId>
     <name>iris-hyperion</name>
     <description>iris-hyperion</description>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
         <java.version>17</java.version>
+        <domain.version>0.1.1-SNAPSHOT</domain.version>
+        <application.version>0.0.2-SNAPSHOT</application.version>
+        <data.version>0.0.1-SNAPSHOT</data.version>
+        <message.version>0.0.1-SNAPSHOT</message.version>
+        <dispatch.version>0.0.1-SNAPSHOT</dispatch.version>
+        <gateway.version>0.0.1-SNAPSHOT</gateway.version>
     </properties>
 
     <modules>
@@ -20,6 +31,41 @@
         <module>iris-hyperion-dispatch</module>
         <module>iris-hyperion-gateway</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.neptrueworks</groupId>
+                <artifactId>iris-hyperion-domain</artifactId>
+                <version>${domain.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.neptrueworks</groupId>
+                <artifactId>iris-hyperion-application</artifactId>
+                <version>${application.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.neptrueworks</groupId>
+                <artifactId>iris-hyperion-data</artifactId>
+                <version>${data.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.neptrueworks</groupId>
+                <artifactId>iris-hyperion-message</artifactId>
+                <version>${message.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.neptrueworks</groupId>
+                <artifactId>iris-hyperion-dispatch</artifactId>
+                <version>${dispatch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.neptrueworks</groupId>
+                <artifactId>iris-hyperion-gateway</artifactId>
+                <version>${gateway.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

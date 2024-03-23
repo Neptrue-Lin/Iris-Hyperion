@@ -60,12 +60,7 @@ public class UserAccount extends AggregateRoot {
     }
 
     public void signInAccount(EventPublisher eventPublisher, SignInAccountCommand command) {
-        if (this.isLocked())
-            throw new AccountLockedException(this.getIdentifier());
-        if (this.isCancelled())
-            throw new AccountCancelledException(this.getIdentifier());
-        if (this.isDeleted())
-            throw new AccountDeletedException(this.getIdentifier());
+        this.checkAccountLoggability();
 
         if (this.isSignedIn())
             return;
@@ -73,6 +68,15 @@ public class UserAccount extends AggregateRoot {
         this.isSignedIn = true;
         eventPublisher.publish(new AccountSignedInEvent(this.getIdentifier(), command.getIdentificationClaim(),
                 eventPublisher.getChronographService().currentDateTime()));
+    }
+
+    public void checkAccountLoggability() {
+        if (this.isLocked())
+            throw new AccountLockedException(this.getIdentifier());
+        if (this.isCancelled())
+            throw new AccountCancelledException(this.getIdentifier());
+        if (this.isDeleted())
+            throw new AccountDeletedException(this.getIdentifier());
     }
 
     public void signOutAccount(EventPublisher eventPublisher, SignOutAccountCommand command) {
