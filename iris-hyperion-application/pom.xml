@@ -5,8 +5,7 @@
     <parent>
         <groupId>org.neptrueworks</groupId>
         <artifactId>iris-hyperion</artifactId>
-        <version>0.1.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>0.1.2-SNAPSHOT</version>
     </parent>
     <artifactId>iris-hyperion-application</artifactId>
     <version>${application.version}</version>
@@ -54,6 +53,16 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-crypto</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.11.0</version>
         </dependency>
     </dependencies>
 

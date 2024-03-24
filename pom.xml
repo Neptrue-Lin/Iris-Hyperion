@@ -11,12 +11,12 @@
     <artifactId>iris-hyperion</artifactId>
     <name>iris-hyperion</name>
     <description>iris-hyperion</description>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
         <java.version>17</java.version>
         <domain.version>0.1.1-SNAPSHOT</domain.version>
-        <application.version>0.0.2-SNAPSHOT</application.version>
+        <application.version>0.0.3-SNAPSHOT</application.version>
         <data.version>0.0.1-SNAPSHOT</data.version>
         <message.version>0.0.1-SNAPSHOT</message.version>
         <dispatch.version>0.0.1-SNAPSHOT</dispatch.version>
