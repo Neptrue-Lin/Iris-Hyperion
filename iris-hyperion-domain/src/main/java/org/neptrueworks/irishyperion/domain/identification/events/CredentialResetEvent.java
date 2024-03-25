@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class CredentialResetEvent extends DomainEvent {
-    private UserIdentifier userId;
-    private IdentificationClaim identifier;
-    private VerificationCredential credential;
-    private LocalDateTime resetAt;
+    private final UserIdentifier userId;
+    private final IdentificationClaim identifier;
+    private final VerificationCredential credential;
+    private final LocalDateTime resetAt;
 }

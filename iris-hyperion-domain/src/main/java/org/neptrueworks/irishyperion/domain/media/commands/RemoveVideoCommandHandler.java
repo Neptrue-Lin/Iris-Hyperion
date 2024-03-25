@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class RemoveVideoCommandHandler extends CommandHandler<RemoveVideoCommand> {
-    private VideoProfileRepository repository;
+    private final VideoProfileRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, RemoveVideoCommand command) {

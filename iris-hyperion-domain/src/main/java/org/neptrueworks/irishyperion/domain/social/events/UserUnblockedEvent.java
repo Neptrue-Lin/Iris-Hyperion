@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class UserUnblockedEvent extends DomainEvent {
-    private UserIdentifier unblockedUser;
-    private UserIdentifier unblockedBy;
-    private LocalDateTime unblockedAt;
+    private final UserIdentifier unblockedUser;
+    private final UserIdentifier unblockedBy;
+    private final LocalDateTime unblockedAt;
 }

@@ -1,17 +1,17 @@
 package org.neptrueworks.irishyperion.domain.social.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class UnblockUserCommand extends Command {
-    private UserIdentifier unblockedUser;
-    private UserIdentifier unblockedBy;
+    private final UserIdentifier unblockedUser;
+    private final UserIdentifier unblockedBy;
 
 
 

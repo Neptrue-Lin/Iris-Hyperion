@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class RemoveIdentityCommandHandler extends CommandHandler<RemoveIdentityCommand> {
-    private UserIdentityRepository repository;
+    private final UserIdentityRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, RemoveIdentityCommand command) {

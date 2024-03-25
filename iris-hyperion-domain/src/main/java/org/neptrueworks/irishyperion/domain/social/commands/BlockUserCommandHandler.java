@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class BlockUserCommandHandler extends CommandHandler<BlockUserCommand> {
-    private SocialEngagementRepository repository;
+    private final SocialEngagementRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, BlockUserCommand command) {

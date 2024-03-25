@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class ResetCredentialCommandHandler extends CommandHandler<ResetCredentialCommand> {
-    private UserIdentityRepository repository;
-    private IdentificationService identificationService;
+    private final UserIdentityRepository repository;
+    private final IdentificationService identificationService;
 
     @Override
     public void handle(EventPublisher eventPublisher, ResetCredentialCommand command) {

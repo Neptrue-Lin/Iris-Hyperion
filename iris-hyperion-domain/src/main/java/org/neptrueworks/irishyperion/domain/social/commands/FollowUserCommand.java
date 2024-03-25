@@ -1,17 +1,17 @@
 package org.neptrueworks.irishyperion.domain.social.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class FollowUserCommand extends Command {
-    private UserIdentifier follower;
-    private UserIdentifier followee;
+    private final UserIdentifier follower;
+    private final UserIdentifier followee;
 
 
 

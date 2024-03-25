@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class UpvoteInteractionCommandHandler extends CommandHandler<UpvoteInteractionCommand> {
-    private InteractionMetricRepository repository;
+    private final InteractionMetricRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, UpvoteInteractionCommand command) {

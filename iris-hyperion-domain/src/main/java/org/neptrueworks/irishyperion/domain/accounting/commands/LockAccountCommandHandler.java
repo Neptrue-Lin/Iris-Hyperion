@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class LockAccountCommandHandler extends CommandHandler<LockAccountCommand> {
-    private UserAccountRepository repository;
+    private final UserAccountRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, LockAccountCommand command) {

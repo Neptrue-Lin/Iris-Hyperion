@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 public class VerificationFailedEvent extends DomainEvent {
-    private UserIdentifier userId;
-    private IdentificationClaim identificationClaim;
-    private LocalDateTime failedAt;
+    private final UserIdentifier userId;
+    private final IdentificationClaim identificationClaim;
+    private final LocalDateTime failedAt;
 }

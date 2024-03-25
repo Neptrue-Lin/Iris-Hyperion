@@ -1,7 +1,7 @@
 package org.neptrueworks.irishyperion.domain.media.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 import org.neptrueworks.irishyperion.domain.interaction.TopicTagIdentifier;
@@ -11,17 +11,17 @@ import java.net.URI;
 import java.util.Collection;
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class PostVideoCommand extends Command {
-    private UserIdentifier author;
-    private String title;
-    private String introduction;
-    private VideoCategoryIdentifier category;
-    private Collection<TopicTagIdentifier> tags;
-    private Collection<UserIdentifier> creators;
-    private URI cover;
-    private URI content;
+    private final UserIdentifier author;
+    private final String title;
+    private final String introduction;
+    private final VideoCategoryIdentifier category;
+    private final Collection<TopicTagIdentifier> tags;
+    private final Collection<UserIdentifier> creators;
+    private final URI cover;
+    private final URI content;
 
 
 

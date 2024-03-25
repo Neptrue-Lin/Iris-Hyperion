@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class InteractionUpvotedEvent extends DomainEvent {
-    private InteractionIdentifier interactionId;
-    private UserIdentifier upvotedBy;
-    private LocalDateTime upvotedAt;
+    private final InteractionIdentifier interactionId;
+    private final UserIdentifier upvotedBy;
+    private final LocalDateTime upvotedAt;
 }

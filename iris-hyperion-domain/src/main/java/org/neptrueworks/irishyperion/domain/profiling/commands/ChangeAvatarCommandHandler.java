@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class ChangeAvatarCommandHandler extends CommandHandler<ChangeAvatarCommand> {
-    private UserOutlineRepository repository;
+    private final UserOutlineRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, ChangeAvatarCommand command) {

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class FollowUserCommandHandler extends CommandHandler<FollowUserCommand> {
-    private SocialEngagementRepository repository;
+    private final SocialEngagementRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, FollowUserCommand command) {

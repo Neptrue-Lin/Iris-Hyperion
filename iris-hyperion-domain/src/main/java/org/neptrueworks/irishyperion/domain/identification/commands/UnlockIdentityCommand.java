@@ -10,22 +10,20 @@ import java.util.Objects;
 
 @Getter
 @AllArgsConstructor
-public class EnableIdentificationCommand extends Command {
+public class UnlockIdentityCommand extends Command {
     private final UserIdentifier userId;
-    private final UserIdentityIdentifier identifier;
-
-
+    private final UserIdentityIdentifier identityIdentifier;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EnableIdentificationCommand that = (EnableIdentificationCommand) o;
-        return Objects.equals(userId, that.userId) && Objects.equals(identifier, that.identifier);
+        UnlockIdentityCommand that = (UnlockIdentityCommand) o;
+        return Objects.equals(userId, that.userId) && Objects.equals(identityIdentifier, that.identityIdentifier);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, identifier);
+        return Objects.hash(userId, identityIdentifier);
     }
 }

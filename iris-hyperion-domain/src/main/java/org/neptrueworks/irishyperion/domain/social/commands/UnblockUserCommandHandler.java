@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class UnblockUserCommandHandler extends CommandHandler<UnblockUserCommand> {
-    private SocialEngagementRepository repository;
+    private final SocialEngagementRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, UnblockUserCommand command) {

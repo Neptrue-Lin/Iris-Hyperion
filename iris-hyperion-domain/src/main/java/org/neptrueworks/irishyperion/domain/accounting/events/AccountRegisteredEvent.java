@@ -10,6 +10,6 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class AccountRegisteredEvent extends DomainEvent {
-    private UserIdentifier identifier;
-    private LocalDateTime registeredAt;
+    private final UserIdentifier identifier;
+    private final LocalDateTime registeredAt;
 }

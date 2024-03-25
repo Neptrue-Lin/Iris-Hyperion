@@ -9,7 +9,7 @@ import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 @Getter
 @AllArgsConstructor
 public class Channel extends AggregateRoot {
-    private ChannelIdentifier channelId;
-    private UserIdentifier userId;
-    private String channelName;
+    private final ChannelIdentifier channelId;
+    private final UserIdentifier userId;
+    private final String channelName;
 }

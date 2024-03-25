@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class PostVideoCommandHandler extends CommandHandler<PostVideoCommand> {
-    private VideoProfileRepository repository;
-    private VideoProfileFactory videoProfileFactory;
+    private final VideoProfileRepository repository;
+    private final VideoProfileFactory videoProfileFactory;
 
     @Override
     public void handle(EventPublisher eventPublisher, PostVideoCommand command) {

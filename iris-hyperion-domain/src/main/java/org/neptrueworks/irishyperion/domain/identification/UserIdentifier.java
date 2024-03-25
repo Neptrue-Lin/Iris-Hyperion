@@ -7,5 +7,5 @@ import org.neptrueworks.irishyperion.domain.core.AggregateIdentifier;
 @AllArgsConstructor
 @Getter
 public class UserIdentifier extends AggregateIdentifier<String> {
-    private String identifier;
+    private final String identifier;
 }

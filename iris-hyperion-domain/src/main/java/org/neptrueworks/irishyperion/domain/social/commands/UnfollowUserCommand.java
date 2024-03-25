@@ -1,17 +1,17 @@
 package org.neptrueworks.irishyperion.domain.social.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class UnfollowUserCommand extends Command {
-    private UserIdentifier unfollower;
-    private UserIdentifier unfollowee;
+    private final UserIdentifier unfollower;
+    private final UserIdentifier unfollowee;
 
 
 

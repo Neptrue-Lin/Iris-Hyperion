@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class UserFollowedEvent extends DomainEvent {
-    private UserIdentifier follower;
-    private UserIdentifier followee;
-    private LocalDateTime followedAt;
+    private final UserIdentifier follower;
+    private final UserIdentifier followee;
+    private final LocalDateTime followedAt;
 }

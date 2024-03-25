@@ -1,18 +1,18 @@
 package org.neptrueworks.irishyperion.domain.interaction.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 import org.neptrueworks.irishyperion.domain.interaction.InteractionIdentifier;
 
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class DownvoteInteractionCommand extends Command {
-    private InteractionIdentifier interactionId;
-    private UserIdentifier userId;
+    private final InteractionIdentifier interactionId;
+    private final UserIdentifier userId;
 
 
 

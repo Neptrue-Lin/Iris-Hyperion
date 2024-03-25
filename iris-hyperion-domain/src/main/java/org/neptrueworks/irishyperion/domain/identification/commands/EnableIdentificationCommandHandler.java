@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class EnableIdentificationCommandHandler extends CommandHandler<EnableIdentificationCommand> {
-    private UserIdentityRepository repository;
+    private final UserIdentityRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, EnableIdentificationCommand command) {

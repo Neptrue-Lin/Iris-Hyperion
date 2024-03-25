@@ -1,17 +1,17 @@
 package org.neptrueworks.irishyperion.domain.accounting.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class RestoreAccountCommand extends Command {
 
-    private UserIdentifier userId;
+    private final UserIdentifier userId;
 
     @Override
     public boolean equals(Object o) {

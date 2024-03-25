@@ -1,14 +1,29 @@
 package org.neptrueworks.irishyperion.domain.identification.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentityIdentifier;
 
-@Data
+import java.util.Objects;
+
+@Getter
 @AllArgsConstructor
 public class RemoveIdentityCommand extends Command {
-    private UserIdentifier userId;
-    private UserIdentityIdentifier identifier;
+    private final UserIdentifier userId;
+    private final UserIdentityIdentifier identifier;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RemoveIdentityCommand that = (RemoveIdentityCommand) o;
+        return Objects.equals(userId, that.userId) && Objects.equals(identifier, that.identifier);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId, identifier);
+    }
 }

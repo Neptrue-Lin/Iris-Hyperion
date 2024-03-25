@@ -1,18 +1,18 @@
 package org.neptrueworks.irishyperion.domain.accounting.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 import org.neptrueworks.irishyperion.domain.identification.IdentificationClaim;
 import org.neptrueworks.irishyperion.domain.identification.VerificationCredential;
 
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class SignInAccountCommand extends Command {
-    private IdentificationClaim identificationClaim;
-    private VerificationCredential verificationCredential;
+    private final IdentificationClaim identificationClaim;
+    private final VerificationCredential verificationCredential;
 
     @Override
     public boolean equals(Object o) {

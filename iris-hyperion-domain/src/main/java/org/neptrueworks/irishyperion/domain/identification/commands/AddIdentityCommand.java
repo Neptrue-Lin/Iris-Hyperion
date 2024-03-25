@@ -1,7 +1,7 @@
 package org.neptrueworks.irishyperion.domain.identification.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 import org.neptrueworks.irishyperion.domain.identification.IdentificationClaim;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
@@ -10,14 +10,14 @@ import org.neptrueworks.irishyperion.domain.identification.VerificationCredentia
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class AddIdentityCommand extends Command {
-    private UserIdentifier userId;
-    private IdentificationClaim identificationClaim;
-    private VerificationCredential verificationCredential;
-    private LocalDateTime identifierDeactivateAt;
-    private LocalDateTime credentialExpireAt;
+    private final UserIdentifier userId;
+    private final IdentificationClaim identificationClaim;
+    private final VerificationCredential verificationCredential;
+    private final LocalDateTime identifierDeactivateAt;
+    private final LocalDateTime credentialExpireAt;
 
     @Override
     public boolean equals(Object o) {

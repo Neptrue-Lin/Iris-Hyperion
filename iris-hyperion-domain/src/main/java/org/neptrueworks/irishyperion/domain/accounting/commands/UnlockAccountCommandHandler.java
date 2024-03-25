@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class UnlockAccountCommandHandler extends CommandHandler<UnlockAccountCommand> {
-    private UserAccountRepository repository;
+    private final UserAccountRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, UnlockAccountCommand command) {

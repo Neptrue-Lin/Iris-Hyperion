@@ -1,19 +1,19 @@
 package org.neptrueworks.irishyperion.domain.profiling.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 
 import java.net.URI;
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class ChangeAvatarCommand extends Command {
-    private Integer userId;
-    private Integer fileSize;
-    private URI avatar;
-    private String avatarThumbnail;
+    private final Integer userId;
+    private final Integer fileSize;
+    private final URI avatar;
+    private final String avatarThumbnail;
 
     @Override
     public boolean equals(Object o) {

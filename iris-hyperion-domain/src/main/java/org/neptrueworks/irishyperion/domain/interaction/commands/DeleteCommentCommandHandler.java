@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class DeleteCommentCommandHandler extends CommandHandler<DeleteCommentCommand> {
-    private CommentProfileRepository repository;
+    private final CommentProfileRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, DeleteCommentCommand command) {

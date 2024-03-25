@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class SignInAccountCommandHandler extends CommandHandler<SignInAccountCommand> {
-    private UserAccountRepository repository;
-    private IdentificationService identificationService;
-    private VerificationService verificationService;
+    private final UserAccountRepository repository;
+    private final IdentificationService identificationService;
+    private final VerificationService verificationService;
 
     @Override
     public void handle(EventPublisher eventPublisher, SignInAccountCommand command) {

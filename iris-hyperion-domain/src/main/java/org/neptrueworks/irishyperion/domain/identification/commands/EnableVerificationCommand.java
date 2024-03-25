@@ -1,18 +1,18 @@
 package org.neptrueworks.irishyperion.domain.identification.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentityIdentifier;
 
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class EnableVerificationCommand extends Command {
-    private UserIdentifier userId;
-    private UserIdentityIdentifier identifier;
+    private final UserIdentifier userId;
+    private final UserIdentityIdentifier identifier;
 
     @Override
     public boolean equals(Object o) {

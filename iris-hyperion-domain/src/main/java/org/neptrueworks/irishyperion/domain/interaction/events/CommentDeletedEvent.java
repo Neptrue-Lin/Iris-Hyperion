@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class CommentDeletedEvent extends DomainEvent {
-    private CommentProfileIdentifier commentId;
-    private UserIdentifier deletedBy;
-    private LocalDateTime deletedAt;
+    private final CommentProfileIdentifier commentId;
+    private final UserIdentifier deletedBy;
+    private final LocalDateTime deletedAt;
 }

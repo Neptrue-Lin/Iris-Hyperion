@@ -16,7 +16,7 @@ import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 @AllArgsConstructor
 @Builder
 public class UserAccount extends AggregateRoot {
-    private UserIdentifier identifier;
+    private final UserIdentifier identifier;
     private boolean isLocked;
     private boolean isCancelled;
     private boolean isDeleted;

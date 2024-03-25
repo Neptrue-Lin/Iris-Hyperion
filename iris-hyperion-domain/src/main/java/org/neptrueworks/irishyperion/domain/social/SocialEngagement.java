@@ -17,8 +17,8 @@ import org.neptrueworks.irishyperion.domain.social.events.UserUnfollowedEvent;
 @Getter
 @AllArgsConstructor
 public class SocialEngagement extends AggregateRoot {
-    private UserIdentifier source;
-    private UserIdentifier target;
+    private final UserIdentifier source;
+    private final UserIdentifier target;
     private boolean isFollowed;
     private boolean isBlocked;
 

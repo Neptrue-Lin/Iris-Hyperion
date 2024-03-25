@@ -1,16 +1,16 @@
 package org.neptrueworks.irishyperion.domain.profiling.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class ChangeUsernameCommand extends Command {
-    private Integer userId;
-    private String username;
+    private final Integer userId;
+    private final String username;
 
     @Override
     public boolean equals(Object o) {

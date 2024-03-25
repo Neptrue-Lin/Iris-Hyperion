@@ -8,6 +8,6 @@ import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 @Getter
 @AllArgsConstructor
 public class CommentIllegalCharactersException extends DomainException {
-    private Iterable<Character> illegalCharacters;
-    private UserIdentifier userId;
+    private final Iterable<Character> illegalCharacters;
+    private final UserIdentifier userId;
 }

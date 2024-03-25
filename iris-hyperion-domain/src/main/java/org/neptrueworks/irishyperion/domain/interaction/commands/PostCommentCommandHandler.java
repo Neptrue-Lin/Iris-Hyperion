@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class PostCommentCommandHandler extends CommandHandler<PostCommentCommand> {
-    private CommentProfileRepository repository;
-    private CommentProfileFactory commentProfileFactory;
+    private final CommentProfileRepository repository;
+    private final CommentProfileFactory commentProfileFactory;
 
     @Override
     public void handle(EventPublisher eventPublisher, PostCommentCommand command) {

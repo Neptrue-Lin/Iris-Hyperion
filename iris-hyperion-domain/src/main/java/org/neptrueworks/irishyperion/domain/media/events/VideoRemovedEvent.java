@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class VideoRemovedEvent extends DomainEvent {
-    private VideoProfileIdentifier video;
-    private UserIdentifier removedBy;
-    private LocalDateTime removedAt;
+    private final VideoProfileIdentifier video;
+    private final UserIdentifier removedBy;
+    private final LocalDateTime removedAt;
 }

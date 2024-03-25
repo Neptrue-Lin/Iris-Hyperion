@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class VideoTitleChangedEvent extends DomainEvent {
-    private VideoProfileIdentifier video;
-    private UserIdentifier changedBy;
-    private LocalDateTime changedAt;
+    private final VideoProfileIdentifier video;
+    private final UserIdentifier changedBy;
+    private final LocalDateTime changedAt;
 }

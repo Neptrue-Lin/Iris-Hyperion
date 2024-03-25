@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class DeleteAccountCommandHandler extends CommandHandler<DeleteAccountCommand> {
-    private UserAccountRepository repository;
+    private final UserAccountRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, DeleteAccountCommand command) {

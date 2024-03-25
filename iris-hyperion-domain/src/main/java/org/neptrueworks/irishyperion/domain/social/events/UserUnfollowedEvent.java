@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class UserUnfollowedEvent extends DomainEvent {
-    private UserIdentifier unfollower;
-    private UserIdentifier unfollowee;
-    private LocalDateTime blockedAt;
+    private final UserIdentifier unfollower;
+    private final UserIdentifier unfollowee;
+    private final LocalDateTime blockedAt;
 }

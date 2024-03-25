@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class CancelAccountCommandHandler extends CommandHandler<CancelAccountCommand> {
-    private UserAccountRepository repository;
+    private final UserAccountRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, CancelAccountCommand command) {

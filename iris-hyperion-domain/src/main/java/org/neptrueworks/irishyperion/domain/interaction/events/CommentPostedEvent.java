@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class CommentPostedEvent extends DomainEvent {
-    private InteractionIdentifier postedTo;
-    private String content;
-    private UserIdentifier postedBy;
-    private LocalDateTime postedAt;
+    private final InteractionIdentifier postedTo;
+    private final String content;
+    private final UserIdentifier postedBy;
+    private final LocalDateTime postedAt;
 }

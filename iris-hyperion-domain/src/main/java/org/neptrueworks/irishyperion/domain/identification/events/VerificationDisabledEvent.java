@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 public class VerificationDisabledEvent extends DomainEvent {
-    private UserIdentifier userId;
-    private UserIdentityIdentifier identifier;
-    private LocalDateTime disabledAt;
+    private final UserIdentifier userId;
+    private final UserIdentityIdentifier identifier;
+    private final LocalDateTime disabledAt;
 }

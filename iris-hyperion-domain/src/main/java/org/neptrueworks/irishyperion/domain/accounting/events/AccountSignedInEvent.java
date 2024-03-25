@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class AccountSignedInEvent extends DomainEvent {
-    private UserIdentifier userId;
-    private IdentificationClaim identificationClaim;
-    private LocalDateTime signedInAt;
+    private final UserIdentifier userId;
+    private final IdentificationClaim identificationClaim;
+    private final LocalDateTime signedInAt;
 }

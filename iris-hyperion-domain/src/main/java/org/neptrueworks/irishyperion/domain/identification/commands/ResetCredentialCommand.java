@@ -1,7 +1,7 @@
 package org.neptrueworks.irishyperion.domain.identification.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 import org.neptrueworks.irishyperion.domain.identification.IdentificationClaim;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
@@ -9,12 +9,12 @@ import org.neptrueworks.irishyperion.domain.identification.VerificationCredentia
 
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class ResetCredentialCommand extends Command {
-    private UserIdentifier userId;
-    private IdentificationClaim identifier;
-    private VerificationCredential credential;
+    private final UserIdentifier userId;
+    private final IdentificationClaim identifier;
+    private final VerificationCredential credential;
 
     @Override
     public boolean equals(Object o) {

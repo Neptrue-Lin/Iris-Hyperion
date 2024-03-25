@@ -10,6 +10,6 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class VideoPostedEvent extends DomainEvent {
-    private UserIdentifier postedBy;
-    private LocalDateTime postedAt;
+    private final UserIdentifier postedBy;
+    private final LocalDateTime postedAt;
 }

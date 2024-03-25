@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class RegisterAccountCommandHandler extends CommandHandler<RegisterAccountCommand> {
-    private UserFacadeFactory userFacadeFactory;
+    private final UserFacadeFactory userFacadeFactory;
 
     @Override
     public void handle(EventPublisher eventPublisher, RegisterAccountCommand command) {

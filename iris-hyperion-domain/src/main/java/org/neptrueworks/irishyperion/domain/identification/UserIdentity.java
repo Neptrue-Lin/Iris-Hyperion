@@ -21,10 +21,11 @@ public class UserIdentity extends AggregateRoot {
     private VerificationCredential verificationCredential;
     private boolean isIdentificationEnabled;
     private boolean isVerificationEnabled;
+    private boolean isLocked;
     private boolean isDeleted;
 
-    private ICredentialCryptographyService credentialCryptographyService;
-    private CredentialPatternRestriction restriction;
+    private final ICredentialCryptographyService credentialCryptographyService;
+    private final CredentialPatternRestriction restriction;
 
     public void resetCredential(EventPublisher eventPublisher, ResetCredentialCommand command) {
         if (!this.isVerificationEnabled)
@@ -73,6 +74,22 @@ public class UserIdentity extends AggregateRoot {
             return;
         this.isVerificationEnabled = false;
         eventPublisher.publish(new VerificationDisabledEvent(this.getUserId(), this.getIdentifier(),
+                eventPublisher.getChronographService().currentDateTime()));
+    }
+
+    public void lockUserIdentity(EventPublisher eventPublisher, LockIdentityCommand command) {
+        if (this.isLocked())
+            return;
+        this.isLocked = true;
+        eventPublisher.publish(new IdentityLockedEvent(this.getUserId(), this.getIdentifier(),
+                eventPublisher.getChronographService().currentDateTime()));
+    }
+
+    public void unlockUserIdentity(EventPublisher eventPublisher, UnlockIdentityCommand command) {
+        if (!this.isLocked())
+            return;
+        this.isLocked = false;
+        eventPublisher.publish(new IdentityUnlockedEvent(this.getUserId(), this.getIdentifier(),
                 eventPublisher.getChronographService().currentDateTime()));
     }
 }

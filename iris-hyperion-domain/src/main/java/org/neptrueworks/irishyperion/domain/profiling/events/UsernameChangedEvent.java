@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class UsernameChangedEvent extends DomainEvent {
-    private String username;
-    private UserIdentifier changedBy;
-    private LocalDateTime changedAt;
+    private final String username;
+    private final UserIdentifier changedBy;
+    private final LocalDateTime changedAt;
 }

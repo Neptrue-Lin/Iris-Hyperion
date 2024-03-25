@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class VideoTagDetachedEvent extends DomainEvent {
-    private VideoProfileIdentifier video;
-    private TopicTagIdentifier tag;
-    private UserIdentifier detachedBy;
-    private LocalDateTime detachedAt;
+    private final VideoProfileIdentifier video;
+    private final TopicTagIdentifier tag;
+    private final UserIdentifier detachedBy;
+    private final LocalDateTime detachedAt;
 }

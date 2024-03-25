@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class AvatarChangedEvent extends DomainEvent {
-    private String encodedThumbnail;
-    private URI avatarURI;
-    private UserIdentifier changedBy;
-    private LocalDateTime changedAt;
+    private final String encodedThumbnail;
+    private final URI avatarURI;
+    private final UserIdentifier changedBy;
+    private final LocalDateTime changedAt;
 }

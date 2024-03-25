@@ -1,7 +1,7 @@
 package org.neptrueworks.irishyperion.domain.media.commands;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.core.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 import org.neptrueworks.irishyperion.domain.media.VideoProfileIdentifier;
@@ -9,12 +9,12 @@ import org.neptrueworks.irishyperion.domain.media.VideoProfileIdentifier;
 import java.net.URI;
 import java.util.Objects;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class ChangeVideoCoverCommand extends Command {
-    private UserIdentifier author;
-    private VideoProfileIdentifier video;
-    private URI cover;
+    private final UserIdentifier author;
+    private final VideoProfileIdentifier video;
+    private final URI cover;
 
 
 

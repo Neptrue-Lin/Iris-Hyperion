@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class EnableVerificationCommandHandler extends CommandHandler<EnableVerificationCommand> {
-    private UserIdentityRepository repository;
+    private final UserIdentityRepository repository;
 
     @Override
     public void handle(EventPublisher eventPublisher, EnableVerificationCommand command) {
