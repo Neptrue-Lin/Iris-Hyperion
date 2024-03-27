@@ -22,7 +22,7 @@ public class VideoProfile extends AggregateRoot {
     private String title;
     private URI cover;
     private Collection<TopicTagIdentifier> tags;
-    private String introduction;
+    private String description;
     private Collection<UserIdentifier> creators;
     private URI content;
     private boolean isPublished;
@@ -56,8 +56,8 @@ public class VideoProfile extends AggregateRoot {
                 eventPublisher.getChronographService().currentDateTime()));
     }
 
-    public void changeIntroduction(EventPublisher eventPublisher, ChangeVideoIntroductionCommand command) {
-        this.introduction = command.getIntroduction();
+    public void changeDescription(EventPublisher eventPublisher, ChangeVideoDescriptionCommand command) {
+        this.description = command.getDescription();
         eventPublisher.publish(new VideoIntroductionChangedEvent(this.getVideoProfileId(),
                 this.getAuthor(), eventPublisher.getChronographService().currentDateTime()));
     }

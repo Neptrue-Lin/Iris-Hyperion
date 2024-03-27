@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
-public class ChangeVideoIntroductionCommandHandler extends CommandHandler<ChangeVideoIntroductionCommand> {
+public class ChangeVideoDescriptionCommandHandler extends CommandHandler<ChangeVideoDescriptionCommand> {
     private final VideoProfileRepository repository;
 
     @Override
-    public void handle(EventPublisher eventPublisher, ChangeVideoIntroductionCommand command) {
+    public void handle(EventPublisher eventPublisher, ChangeVideoDescriptionCommand command) {
         VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.getVideo());
-        videoProfile.changeIntroduction(eventPublisher, command);
+        videoProfile.changeDescription(eventPublisher, command);
         this.repository.save(videoProfile);
     }
 }

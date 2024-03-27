@@ -20,14 +20,12 @@ public class UserOutline extends AggregateRoot {
     private UserIdentifier userId;
     private String username;
     private URI avatarURI;
-    private String avatarThumbnail;
     private boolean isDeleted;
 
     public void changeAvatar(EventPublisher eventPublisher, ChangeAvatarCommand command) {
         this.avatarURI = command.getAvatar();
-        this.avatarThumbnail = command.getAvatarThumbnail();
 
-        eventPublisher.publish(new AvatarChangedEvent(this.getAvatarThumbnail(), this.getAvatarURI(),
+        eventPublisher.publish(new AvatarChangedEvent(this.getAvatarURI(),
                 this.getUserId(), eventPublisher.getChronographService().currentDateTime()));
     }
 

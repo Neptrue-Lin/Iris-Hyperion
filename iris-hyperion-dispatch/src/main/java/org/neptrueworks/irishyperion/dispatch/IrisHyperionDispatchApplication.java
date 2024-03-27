@@ -1,13 +1,13 @@
-package org.neptrueworks.irishyperion.message;
+package org.neptrueworks.irishyperion.dispatch;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class IrisHyperionCommunicatingApplication {
+public class IrisHyperionDispatchApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(IrisHyperionCommunicatingApplication.class, args);
+        SpringApplication.run(IrisHyperionDispatchApplication.class, args);
     }
 
 }

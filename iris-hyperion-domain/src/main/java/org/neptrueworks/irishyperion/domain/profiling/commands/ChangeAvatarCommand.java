@@ -13,7 +13,6 @@ public class ChangeAvatarCommand extends Command {
     private final Integer userId;
     private final Integer fileSize;
     private final URI avatar;
-    private final String avatarThumbnail;
 
     @Override
     public boolean equals(Object o) {
@@ -21,12 +20,11 @@ public class ChangeAvatarCommand extends Command {
         if (o == null || getClass() != o.getClass()) return false;
         ChangeAvatarCommand that = (ChangeAvatarCommand) o;
         return Objects.equals(userId, that.userId) && Objects.equals(fileSize, that.fileSize)
-                && Objects.equals(avatar, that.avatar)
-                && Objects.equals(avatarThumbnail, that.avatarThumbnail);
+                && Objects.equals(avatar, that.avatar);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, fileSize, avatar, avatarThumbnail);
+        return Objects.hash(userId, fileSize, avatar);
     }
 }

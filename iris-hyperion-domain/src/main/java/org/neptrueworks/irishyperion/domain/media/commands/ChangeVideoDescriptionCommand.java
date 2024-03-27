@@ -10,10 +10,10 @@ import java.util.Objects;
 
 @Getter
 @AllArgsConstructor
-public class ChangeVideoIntroductionCommand extends Command {
+public class ChangeVideoDescriptionCommand extends Command {
     private final UserIdentifier author;
     private final VideoProfileIdentifier video;
-    private final String introduction;
+    private final String description;
 
 
 
@@ -21,13 +21,13 @@ public class ChangeVideoIntroductionCommand extends Command {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ChangeVideoIntroductionCommand that = (ChangeVideoIntroductionCommand) o;
+        ChangeVideoDescriptionCommand that = (ChangeVideoDescriptionCommand) o;
         return Objects.equals(author, that.author) && Objects.equals(video, that.video)
-                && Objects.equals(introduction, that.introduction);
+                && Objects.equals(description, that.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(author, video, introduction);
+        return Objects.hash(author, video, description);
     }
 }

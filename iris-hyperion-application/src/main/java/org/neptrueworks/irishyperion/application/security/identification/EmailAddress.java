@@ -10,13 +10,13 @@ import java.util.regex.Pattern;
 @AllArgsConstructor
 public class EmailAddress extends IdentificationClaim {
     private static final int EMAIL_ADDRESS_PART_TOTAL_COUNT = 2;
-    private static final Pattern VALID_HOST_NAME_PATTERN = Pattern.compile("^[A-z0-9][A-z0-9_-]*$");
-    private static final Pattern VALID_DOMAIN_NAME_PATTERN = Pattern.compile("^[A-z0-9][A-z0-9-]*$");
+    private static final Pattern VALID_HOST_NAME_PATTERN = Pattern.compile("^[A-z0-9][A-z0-9_-]*[A-z0-9]?$");
+    private static final Pattern VALID_DOMAIN_NAME_PATTERN = Pattern.compile("^[A-z0-9][A-z0-9-]*[A-z0-9]?$");
     private static final int HOST_PART_INDEX = 0;
     private static final int DOMAIN_PART_INDEX = 1;
     private static final int MAX_HOST_PART_LENGTH = 64;
     private static final int MAX_DOMAIN_PART_LENGTH = 255;
-    private static final int MAX_DOMAIN_NAME_LENGTH = 64;
+    private static final int MAX_DOMAIN_NAME_LENGTH = 63;
     private static final String EMAIL_SEPARATOR = "@";
     private static final String LEVEL_SEPARATOR = "\\.";
     private String claim;
@@ -56,6 +56,11 @@ public class EmailAddress extends IdentificationClaim {
             return false;
 
         String[] domainNameSplits = domainPart.split(LEVEL_SEPARATOR);
+
+        //The level of domain should not be over 2nd.
+        if(domainNameSplits.length > 3)
+            return false;
+
         for (String domainNameSplit : domainNameSplits) {
             if (domainNameSplit.length() > MAX_DOMAIN_NAME_LENGTH
                     || domainNameSplit.isEmpty())
