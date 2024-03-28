@@ -1,4 +1,4 @@
-package org.neptrueworks.irishyperion.data.persistence.entitizing;
+package org.neptrueworks.irishyperion.data.entitizing;
 
 import com.mybatisflex.annotation.Id;
 import com.mybatisflex.annotation.Table;

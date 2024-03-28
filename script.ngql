@@ -1,0 +1,86 @@
+CREATE TAG `comment` (
+ `content`          string      NOT NULL,
+ `is_deleted`       bool        NOT NULL    DEFAULT false,
+ `last_modified_at` timestamp   NOT NULL    DEFAULT now(),
+ `created_at`       timestamp   NOT NULL    DEFAULT now()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE TAG `user` (
+    `profile_id`        int64       NOT NULL,
+    `username`          string      NOT NULL,
+    `avatar`            string      NULL,
+    `level`             int8        NOT NULL    DEFAULT 0,
+    `birthday`          date        NULL,
+    `gender`            bool        NULL,
+    `is_deleted`        bool        NOT NULL    DEFAULT false,
+    `last_modified_at`  timestamp   NOT NULL    DEFAULT now(),
+    `created_at`        timestamp   NOT NULL    DEFAULT now()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE TAG `video` (
+    `title`             string      NOT NULL,
+    `cover`             string      NOT NULL,
+    `content`           string      NOT NULL,
+    `description`       string      NULL,
+    `is_deleted`        bool        NOT NULL    DEFAULT false,
+    `last_modified_at`  timestamp   NOT NULL    DEFAULT now(),
+    `created_at`        timestamp   NOT NULL    DEFAULT now()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE TAG `video_category` (
+ `name`             string      NOT NULL,
+ `description`      string      NULL,
+ `is_deleted`       bool        NOT NULL    DEFAULT false,
+ `last_modified_at` timestamp   NOT NULL    DEFAULT now(),
+ `created_at`       timestamp   NOT NULL    DEFAULT now()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE TAG `video_tag` (
+ `name`             string      NOT NULL,
+ `description`      string      NULL,
+ `is_deleted`       bool        NOT NULL    DEFAULT false,
+ `last_modified_at` timestamp   NOT NULL    DEFAULT now(),
+ `created_at`       timestamp   NOT NULL    DEFAULT now()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE EDGE `attach` (
+ `attached_at`      datetime    NOT NULL    DEFAULT datetime()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE EDGE `block` (
+ `blocked_at`       datetime    NOT NULL    DEFAULT datetime()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE EDGE `categorize` (
+ `categorized_at`   datetime    NOT NULL    DEFAULT datetime()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE EDGE `commentate` (
+ `commentated_at`   datetime    NOT NULL    DEFAULT datetime()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE EDGE `follow` (
+ `followed_at`      datetime    NOT NULL    DEFAULT datetime()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE EDGE `post` (
+ `posted_at`         datetime    NOT NULL    DEFAULT datetime()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE EDGE `publish` (
+ `published_at`        datetime    NOT NULL    DEFAULT datetime()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE EDGE `react` (
+ `reaction`     int64       NOT NULL,
+ `reacted_at`   datetime    NOT NULL    DEFAULT datetime()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE EDGE `reply` (
+ `replied_at`   datetime    NOT NULL    DEFAULT datetime()
+) ttl_duration = 0, ttl_col = "";
+
+CREATE EDGE `vote` (
+ `is_upvoted`   bool        NOT NULL,
+ `voted_at`     datetime    NOT NULL    DEFAULT datetime()
+) ttl_duration = 0, ttl_col = "";

@@ -114,6 +114,7 @@ create table video_profile
         primary key,
     title            varchar(35)              not null,
     author           bigint unsigned          not null,
+    cover            varchar(256)             not null,
     creators         bigint unsigned          null,
     category         bigint unsigned          not null,
     tags             bigint unsigned          null,

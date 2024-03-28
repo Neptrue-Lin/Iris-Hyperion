@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.neptrueworks</groupId>
         <artifactId>iris-hyperion</artifactId>
-        <version>0.1.4-SNAPSHOT</version>
+        <version>0.1.5-SNAPSHOT</version>
     </parent>
     <artifactId>iris-hyperion-domain</artifactId>
     <version>${domain.version}</version>
@@ -46,5 +46,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

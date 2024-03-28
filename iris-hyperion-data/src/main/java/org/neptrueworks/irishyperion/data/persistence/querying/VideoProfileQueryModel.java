@@ -14,6 +14,7 @@ public class VideoProfileQueryModel {
     private long id;
     private String title;
     private long author;
+    private String cover;
     private List<UserProfileQueryModel> creators;
     private List<VideoCategoryQueryModel> category;
     private List<VideoTagQueryModel> tags;
