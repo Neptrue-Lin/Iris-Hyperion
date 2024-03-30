@@ -3,13 +3,10 @@ package org.neptrueworks.irishyperion.domain.identification;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import org.neptrueworks.irishyperion.domain.core.AggregateRoot;
-import org.neptrueworks.irishyperion.domain.core.EventPublisher;
+import org.neptrueworks.irishyperion.domain.common.AggregateRoot;
+import org.neptrueworks.irishyperion.domain.common.EventPublisher;
 import org.neptrueworks.irishyperion.domain.identification.commands.*;
 import org.neptrueworks.irishyperion.domain.identification.events.*;
-import org.neptrueworks.irishyperion.domain.identification.exceptions.VerificationDisabledException;
-import org.neptrueworks.irishyperion.domain.identification.services.CredentialPatternRestriction;
-import org.neptrueworks.irishyperion.domain.identification.services.ICredentialCryptographyService;
 
 @Getter
 @AllArgsConstructor
@@ -18,24 +15,10 @@ public class UserIdentity extends AggregateRoot {
     private UserIdentityIdentifier identifier;
     private UserIdentifier userId;
     private IdentificationClaim identificationClaim;
-    private VerificationCredential verificationCredential;
     private boolean isIdentificationEnabled;
     private boolean isVerificationEnabled;
     private boolean isLocked;
     private boolean isDeleted;
-
-    private final ICredentialCryptographyService credentialCryptographyService;
-    private final CredentialPatternRestriction restriction;
-
-    public void resetCredential(EventPublisher eventPublisher, ResetCredentialCommand command) {
-        if (!this.isVerificationEnabled)
-            throw new VerificationDisabledException(this.userId, this.identificationClaim);
-
-        this.restriction.restrict(command.getCredential());
-        this.verificationCredential = this.credentialCryptographyService.encrypt(command.getCredential());
-        eventPublisher.publish(new CredentialResetEvent(this.getUserId(), this.getIdentificationClaim(),
-                this.getVerificationCredential(), eventPublisher.getChronographService().currentDateTime()));
-    }
 
     public void removeUserIdentity(EventPublisher eventPublisher, RemoveIdentityCommand command) {
         if (this.isDeleted())

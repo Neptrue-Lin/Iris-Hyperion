@@ -2,7 +2,7 @@ package org.neptrueworks.irishyperion.domain.profiling.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.neptrueworks.irishyperion.domain.core.DomainException;
+import org.neptrueworks.irishyperion.domain.common.DomainException;
 
 @Getter
 @AllArgsConstructor

@@ -2,7 +2,7 @@ package org.neptrueworks.irishyperion.domain.profiling.commands;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.neptrueworks.irishyperion.domain.core.Command;
+import org.neptrueworks.irishyperion.domain.common.Command;
 
 import java.util.Objects;
 

@@ -2,7 +2,7 @@ package org.neptrueworks.irishyperion.domain.media.commands;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.neptrueworks.irishyperion.domain.core.Command;
+import org.neptrueworks.irishyperion.domain.common.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 import org.neptrueworks.irishyperion.domain.interaction.TopicTagIdentifier;
 import org.neptrueworks.irishyperion.domain.media.VideoProfileIdentifier;
@@ -29,6 +29,4 @@ public class AttachVideoTagCommand extends Command {
     public int hashCode() {
         return Objects.hash(author, video, tag);
     }
-
-
 }

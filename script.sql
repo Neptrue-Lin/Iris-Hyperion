@@ -39,6 +39,7 @@ create table user_account
 (
     id               bigint unsigned           not null
         primary key,
+    password         char(32)                  null,
     is_locked        bit       default b'0'    not null,
     is_cancelled     bit       default b'0'    not null,
     is_deleted       bit       default b'0'    not null,
@@ -52,7 +53,6 @@ create table user_identity
         primary key,
     user_id                   bigint unsigned           not null,
     identification_claim      varchar(256)              not null,
-    verification_credential   char(60)                  not null,
     is_identification_enabled bit       default b'0'    not null,
     is_verification_enabled   bit       default b'0'    not null,
     is_locked                 bit       default b'0'    not null,

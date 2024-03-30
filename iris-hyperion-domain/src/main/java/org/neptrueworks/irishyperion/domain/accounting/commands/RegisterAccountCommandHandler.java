@@ -2,8 +2,8 @@ package org.neptrueworks.irishyperion.domain.accounting.commands;
 
 import lombok.AllArgsConstructor;
 import org.neptrueworks.irishyperion.domain.accounting.UserFacadeFactory;
-import org.neptrueworks.irishyperion.domain.core.CommandHandler;
-import org.neptrueworks.irishyperion.domain.core.EventPublisher;
+import org.neptrueworks.irishyperion.domain.common.CommandHandler;
+import org.neptrueworks.irishyperion.domain.common.EventPublisher;
 import org.springframework.stereotype.Component;
 
 @Component

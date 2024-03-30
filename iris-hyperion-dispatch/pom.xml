@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.neptrueworks</groupId>
         <artifactId>iris-hyperion</artifactId>
-        <version>0.1.6-SNAPSHOT</version>
+        <version>0.2.0-SNAPSHOT</version>
     </parent>
     <artifactId>iris-hyperion-dispatch</artifactId>
     <version>${dispatch.version}</version>
@@ -42,6 +42,20 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.neptrueworks</groupId>
+            <artifactId>iris-hyperion-domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

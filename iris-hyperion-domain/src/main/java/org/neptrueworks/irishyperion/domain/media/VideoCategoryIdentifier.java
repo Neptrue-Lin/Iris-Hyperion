@@ -1,6 +1,6 @@
 package org.neptrueworks.irishyperion.domain.media;
 
-import org.neptrueworks.irishyperion.domain.core.AggregateIdentifier;
+import org.neptrueworks.irishyperion.domain.common.AggregateIdentifier;
 
 public abstract class VideoCategoryIdentifier extends AggregateIdentifier<String> {
 }

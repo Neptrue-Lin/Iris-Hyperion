@@ -2,10 +2,10 @@ package org.neptrueworks.irishyperion.domain.identification.commands;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.neptrueworks.irishyperion.domain.core.Command;
+import org.neptrueworks.irishyperion.domain.common.Command;
 import org.neptrueworks.irishyperion.domain.identification.IdentificationClaim;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
-import org.neptrueworks.irishyperion.domain.identification.VerificationCredential;
+import org.neptrueworks.irishyperion.domain.verification.VerificationCredential;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

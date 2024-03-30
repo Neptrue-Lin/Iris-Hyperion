@@ -2,7 +2,7 @@ package org.neptrueworks.irishyperion.domain.interaction.commands;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.neptrueworks.irishyperion.domain.core.Command;
+import org.neptrueworks.irishyperion.domain.common.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 import org.neptrueworks.irishyperion.domain.interaction.InteractionIdentifier;
 
@@ -13,8 +13,6 @@ import java.util.Objects;
 public class UpvoteInteractionCommand extends Command {
     private final InteractionIdentifier interactionId;
     private final UserIdentifier userId;
-
-
 
     @Override
     public boolean equals(Object o) {

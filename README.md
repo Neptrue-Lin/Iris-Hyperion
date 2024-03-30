@@ -3,16 +3,13 @@
 - SpringBoot
 - SpringSecurity
 - MybatisFlex
-- Redis
+- *Redis
 - NebulaGraph
 - ElasticSearch
-- Kafka
-- Docker
+- *Kafka
+- *Docker
 
-## 六边形架构
+## 六边形架构与 DDD
+![architecture.png](architecture.png)
 
-## DDD
-
-## CQRS
-
-## 事件溯源与事件驱动开发
+## CQRS 与事件溯源与事件驱动开发

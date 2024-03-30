@@ -2,7 +2,7 @@ package org.neptrueworks.irishyperion.domain.identification.commands;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.neptrueworks.irishyperion.domain.core.Command;
+import org.neptrueworks.irishyperion.domain.common.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentityIdentifier;
 
@@ -26,6 +26,4 @@ public class DisableVerificationCommand extends Command {
     public int hashCode() {
         return Objects.hash(userId, identifier);
     }
-
-
 }

@@ -2,7 +2,7 @@ package org.neptrueworks.irishyperion.domain.media.commands;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.neptrueworks.irishyperion.domain.core.Command;
+import org.neptrueworks.irishyperion.domain.common.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 import org.neptrueworks.irishyperion.domain.interaction.TopicTagIdentifier;
 import org.neptrueworks.irishyperion.domain.media.VideoCategoryIdentifier;
@@ -22,8 +22,6 @@ public class PostVideoCommand extends Command {
     private final Collection<UserIdentifier> creators;
     private final URI cover;
     private final URI content;
-
-
 
     @Override
     public boolean equals(Object o) {

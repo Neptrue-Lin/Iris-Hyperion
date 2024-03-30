@@ -8,21 +8,43 @@ import org.neptrueworks.irishyperion.domain.accounting.events.*;
 import org.neptrueworks.irishyperion.domain.accounting.exceptions.AccountCancelledException;
 import org.neptrueworks.irishyperion.domain.accounting.exceptions.AccountDeletedException;
 import org.neptrueworks.irishyperion.domain.accounting.exceptions.AccountLockedException;
-import org.neptrueworks.irishyperion.domain.core.AggregateRoot;
-import org.neptrueworks.irishyperion.domain.core.EventPublisher;
+import org.neptrueworks.irishyperion.domain.common.AggregateRoot;
+import org.neptrueworks.irishyperion.domain.common.EventPublisher;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
+import org.neptrueworks.irishyperion.domain.verification.VerificationCredential;
+import org.neptrueworks.irishyperion.domain.verification.services.CredentialPatternRestriction;
+import org.neptrueworks.irishyperion.domain.verification.services.ICredentialCryptographyService;
 
 @Getter
 @AllArgsConstructor
 @Builder
 public class UserAccount extends AggregateRoot {
     private final UserIdentifier identifier;
+    private VerificationCredential credential;
     private boolean isLocked;
     private boolean isCancelled;
     private boolean isDeleted;
     private boolean isSignedIn;
 
+    private ICredentialCryptographyService credentialCryptographyService;
+    private CredentialPatternRestriction credentialPatternRestriction;
+
+    public void resetCredential(EventPublisher eventPublisher, ResetCredentialCommand command) {
+        if (this.isLocked())
+            throw new AccountLockedException(this.getIdentifier());
+        if (this.isDeleted())
+            throw new AccountDeletedException(this.getIdentifier());
+        if (this.isCancelled())
+            throw new AccountCancelledException(this.getIdentifier());
+
+        this.credential = this.credentialCryptographyService.encrypt(command.getCredential());
+        eventPublisher.publish(new CredentialResetEvent(this.getIdentifier(), command.getIdentifier(), this.getCredential(),
+                eventPublisher.getChronographService().currentDateTime()));
+    }
+
     public void deleteAccount(EventPublisher eventPublisher, DeleteAccountCommand command) {
+        if (this.isLocked())
+            throw new AccountLockedException(this.getIdentifier());
         if (this.isDeleted())
             return;
         this.isDeleted = true;
@@ -30,13 +52,17 @@ public class UserAccount extends AggregateRoot {
     }
 
     public void cancelAccount(EventPublisher eventPublisher, CancelAccountCommand command) {
-        if (this.isCancelled())
+        if (this.isLocked())
+            throw new AccountLockedException(this.getIdentifier());
+        if (this.isDeleted() || this.isCancelled())
             return;
         this.isCancelled = true;
         eventPublisher.publish(new AccountCancelledEvent(this.getIdentifier(), eventPublisher.getChronographService().currentDateTime()));
     }
 
     public void restoreAccount(EventPublisher eventPublisher, RestoreAccountCommand command) {
+        if (this.isLocked())
+            throw new AccountLockedException(this.getIdentifier());
         if (this.isDeleted())
             throw new AccountDeletedException(this.getIdentifier());
         if (!this.isCancelled())
@@ -46,22 +72,31 @@ public class UserAccount extends AggregateRoot {
     }
 
     public void lockAccount(EventPublisher eventPublisher, LockAccountCommand command) {
+        if (this.isCancelled())
+            throw new AccountCancelledException(this.getIdentifier());
+        if (this.isDeleted())
+            throw new AccountDeletedException(this.getIdentifier());
         if (this.isLocked())
             return;
+
         this.isLocked = true;
         eventPublisher.publish(new AccountLockedEvent(this.getIdentifier(), eventPublisher.getChronographService().currentDateTime()));
     }
 
     public void unlockAccount(EventPublisher eventPublisher, UnlockAccountCommand command) {
+        if (this.isCancelled())
+            throw new AccountCancelledException(this.getIdentifier());
+        if (this.isDeleted())
+            throw new AccountDeletedException(this.getIdentifier());
         if (!this.isLocked())
             return;
+
         this.isLocked = false;
         eventPublisher.publish(new AccountUnlockedEvent(this.getIdentifier(), eventPublisher.getChronographService().currentDateTime()));
     }
 
     public void signInAccount(EventPublisher eventPublisher, SignInAccountCommand command) {
         this.checkAccountLoggability();
-
         if (this.isSignedIn())
             return;
 

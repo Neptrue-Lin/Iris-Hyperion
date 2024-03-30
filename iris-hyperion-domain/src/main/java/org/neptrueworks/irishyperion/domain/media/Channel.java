@@ -3,7 +3,7 @@ package org.neptrueworks.irishyperion.domain.media;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.neptrueworks.irishyperion.domain.core.AggregateRoot;
+import org.neptrueworks.irishyperion.domain.common.AggregateRoot;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 
 @Getter

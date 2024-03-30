@@ -1,6 +1,6 @@
 package org.neptrueworks.irishyperion.domain.identification;
 
-import org.neptrueworks.irishyperion.domain.core.Repository;
+import org.neptrueworks.irishyperion.domain.common.Repository;
 
 public abstract class UserIdentityRepository extends Repository<UserIdentity> {
     public abstract UserIdentity fetchByIdentifierOrError(UserIdentityIdentifier identifier);

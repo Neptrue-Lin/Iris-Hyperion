@@ -2,7 +2,7 @@ package org.neptrueworks.irishyperion.domain.identification.commands;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.neptrueworks.irishyperion.domain.core.Command;
+import org.neptrueworks.irishyperion.domain.common.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentityIdentifier;
 
@@ -13,8 +13,6 @@ import java.util.Objects;
 public class EnableIdentificationCommand extends Command {
     private final UserIdentifier userId;
     private final UserIdentityIdentifier identifier;
-
-
 
     @Override
     public boolean equals(Object o) {

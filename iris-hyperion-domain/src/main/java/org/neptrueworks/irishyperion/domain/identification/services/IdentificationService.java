@@ -1,6 +1,6 @@
 package org.neptrueworks.irishyperion.domain.identification.services;
 
-import org.neptrueworks.irishyperion.domain.core.DomainService;
+import org.neptrueworks.irishyperion.domain.common.DomainService;
 import org.neptrueworks.irishyperion.domain.identification.IdentificationClaim;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentity;
 

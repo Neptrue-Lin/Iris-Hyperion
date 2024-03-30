@@ -1,8 +1,8 @@
 package org.neptrueworks.irishyperion.domain.interaction.commands;
 
 import lombok.AllArgsConstructor;
-import org.neptrueworks.irishyperion.domain.core.CommandHandler;
-import org.neptrueworks.irishyperion.domain.core.EventPublisher;
+import org.neptrueworks.irishyperion.domain.common.CommandHandler;
+import org.neptrueworks.irishyperion.domain.common.EventPublisher;
 import org.neptrueworks.irishyperion.domain.interaction.InteractionMetric;
 import org.neptrueworks.irishyperion.domain.interaction.InteractionMetricRepository;
 import org.springframework.stereotype.Component;
