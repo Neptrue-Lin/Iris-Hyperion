@@ -2,6 +2,8 @@
 ## 项目介绍
 - SpringBoot
 - SpringSecurity
+- JUnit5
+- Mockito
 - MybatisFlex
 - *Redis
 - NebulaGraph

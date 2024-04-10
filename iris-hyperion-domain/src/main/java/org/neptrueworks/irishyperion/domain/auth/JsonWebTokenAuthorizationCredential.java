@@ -10,7 +10,7 @@ import javax.crypto.SecretKey;
 public class JsonWebTokenAuthorizationCredential extends TokenizableAuthorizationCredential {
     private static final SecretKey KEY = null;
     private final JsonWebTokenPayload payload;
-    private final CharSequence credential;
+    private final String credential;
     private final JsonWebTokenTokenizationService service;
 
 
@@ -21,7 +21,7 @@ public class JsonWebTokenAuthorizationCredential extends TokenizableAuthorizatio
     }
 
     @Override
-    protected CharSequence tokenize() {
+    protected String tokenize() {
         return this.service.tokenize(JsonWebTokenAuthorizationCredential.KEY, this.payload);
     }
 }

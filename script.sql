@@ -39,7 +39,6 @@ create table user_account
 (
     id               bigint unsigned           not null
         primary key,
-    password         char(32)                  null,
     is_locked        bit       default b'0'    not null,
     is_cancelled     bit       default b'0'    not null,
     is_deleted       bit       default b'0'    not null,
@@ -54,8 +53,8 @@ create table user_identity
     user_id                   bigint unsigned           not null,
     identification_claim      varchar(256)              not null,
     is_identification_enabled bit       default b'0'    not null,
-    is_verification_enabled   bit       default b'0'    not null,
     is_locked                 bit       default b'0'    not null,
+    is_deactivated            bit       default b'0'    not null,
     is_deleted                bit       default b'0'    not null,
     last_modified_at          timestamp default (now()) not null,
     created_at                timestamp default (now()) not null
@@ -66,6 +65,28 @@ create index idx_identification_claim
 
 create index idx_user_id
     on user_identity (user_id);
+
+create table user_verity
+(
+    id                        bigint unsigned           not null
+        primary key,
+    user_id                   bigint unsigned           not null,
+    identity_id               bigint unsigned           not null,
+    verification_credential   varchar(256)              not null,
+    is_verification_enabled   bit       default b'0'    not null,
+    is_locked                 bit       default b'0'    not null,
+    is_expired                bit       default b'0'    not null,
+    is_invalid                bit       default b'0'    not null,
+    is_deleted                bit       default b'0'    not null,
+    last_modified_at          timestamp default (now()) not null,
+    created_at                timestamp default (now()) not null
+);
+
+create index idx_identity_id
+    on user_verity (identity_id);
+
+create index idx_user_id
+    on user_verity (user_id);
 
 create table user_profile
 (

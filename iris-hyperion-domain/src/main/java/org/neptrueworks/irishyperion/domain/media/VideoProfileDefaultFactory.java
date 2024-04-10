@@ -20,7 +20,7 @@ public class VideoProfileDefaultFactory extends VideoProfileFactory {
                 .title(command.getTitle())
                 .cover(command.getCover())
                 .tags(command.getTags())
-                .introduction(command.getIntroduction())
+                .description(command.getDescription())
                 .creators(command.getCreators())
                 .content(command.getContent())
                 .build();

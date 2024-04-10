@@ -20,6 +20,7 @@ public class UserOutline extends AggregateRoot {
     private UserIdentifier userId;
     private String username;
     private URI avatarURI;
+    private short level;
     private boolean isDeleted;
 
     public void changeAvatar(EventPublisher eventPublisher, ChangeAvatarCommand command) {

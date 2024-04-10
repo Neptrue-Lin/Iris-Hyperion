@@ -2,36 +2,33 @@ package org.neptrueworks.irishyperion.domain.identification.services;
 
 import lombok.AllArgsConstructor;
 import org.neptrueworks.irishyperion.domain.identification.IdentificationClaim;
-import org.neptrueworks.irishyperion.domain.identification.PhoneNumber;
+import org.neptrueworks.irishyperion.domain.identification.TelephoneNumber;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentity;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentityRepository;
-import org.neptrueworks.irishyperion.domain.identification.exceptions.*;
+import org.neptrueworks.irishyperion.domain.identification.exceptions.IdentificationDisabledException;
+import org.neptrueworks.irishyperion.domain.identification.exceptions.TelephoneInactiveException;
+import org.neptrueworks.irishyperion.domain.identification.exceptions.TelephoneVirtualException;
+import org.neptrueworks.irishyperion.domain.identification.rules.TelephoneNumberPatternRule;
 import org.springframework.stereotype.Component;
-
-import java.util.Locale;
 
 @Component
 @AllArgsConstructor
 public class PhoneNumberIdentificationService extends IdentificationService {
-    private UserIdentityRepository repository;
-    private ITelephoneNumberLookupService lookupService;
+    private final UserIdentityRepository repository;
+    private final ITelephoneNumberLookupService lookupService;
+    private final TelephoneNumberPatternRule telephoneNumberPatternRule;
 
     @Override
     public UserIdentity identify(IdentificationClaim identifier) {
-        if (!(identifier instanceof PhoneNumber phoneNumber))
+        if (!(identifier instanceof TelephoneNumber telephoneNumber))
             throw new IllegalArgumentException();
 
-        if (!PhoneNumber.isMatch(phoneNumber.getClaim()))
-            throw new InvalidPhoneNumberFormatException();
-        if (phoneNumber.getCountryCode() != Locale.CHINA)
-            throw new TelephoneCountryNotSupportedException(phoneNumber);
+        if (this.lookupService.getTelephoneNumberStatus(telephoneNumber) != TelephoneNumberStatus.ACTIVE)
+            throw new TelephoneInactiveException(telephoneNumber);
+        if (this.lookupService.isVirtual(telephoneNumber))
+            throw new TelephoneVirtualException(telephoneNumber);
 
-        if (this.lookupService.getTelephoneNumberStatus(phoneNumber) != TelephoneNumberStatus.ACTIVE)
-            throw new TelephoneInactiveException(phoneNumber);
-        if (this.lookupService.isVirtual(phoneNumber))
-            throw new TelephoneVirtualException(phoneNumber);
-
-        UserIdentity userIdentity = this.repository.fetchByIdentificationIdentifierOrError(identifier);
+        UserIdentity userIdentity = this.repository.fetchByIdentificationClaimOrError(identifier);
         if (!userIdentity.isIdentificationEnabled())
             throw new IdentificationDisabledException(userIdentity.getUserId(), userIdentity.getIdentificationClaim());
 

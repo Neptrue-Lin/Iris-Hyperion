@@ -1,6 +1,7 @@
 package org.neptrueworks.irishyperion.domain.interaction;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.common.AggregateRoot;
 import org.neptrueworks.irishyperion.domain.common.EventPublisher;
@@ -12,10 +13,11 @@ import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
+@Builder
 public class CommentProfile extends AggregateRoot {
-    private CommentProfileIdentifier commentId;
-    private InteractionIdentifier postedTo;
-    private UserIdentifier postedBy;
+    private CommentProfileIdentifier identifier;
+    private InteractionIdentifier target;
+    private UserIdentifier author;
     private LocalDateTime postedAt;
     private String content;
     private boolean isDeleted;
@@ -24,7 +26,7 @@ public class CommentProfile extends AggregateRoot {
         if(this.isDeleted())
             return;
         this.isDeleted = true;
-        eventPublisher.publish(new CommentDeletedEvent(this.getCommentId(), this.getPostedBy(),
+        eventPublisher.publish(new CommentDeletedEvent(this.getIdentifier(), this.getAuthor(),
                 eventPublisher.getChronographService().currentDateTime()));
     }
 }

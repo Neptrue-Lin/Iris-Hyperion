@@ -16,8 +16,8 @@ public class UserIdentity extends AggregateRoot {
     private UserIdentifier userId;
     private IdentificationClaim identificationClaim;
     private boolean isIdentificationEnabled;
-    private boolean isVerificationEnabled;
     private boolean isLocked;
+    private boolean isDeactivated;
     private boolean isDeleted;
 
     public void removeUserIdentity(EventPublisher eventPublisher, RemoveIdentityCommand command) {
@@ -44,22 +44,6 @@ public class UserIdentity extends AggregateRoot {
                 eventPublisher.getChronographService().currentDateTime()));
     }
 
-    public void enableVerification(EventPublisher eventPublisher, EnableVerificationCommand command) {
-        if (this.isVerificationEnabled())
-            return;
-        this.isVerificationEnabled = true;
-        eventPublisher.publish(new VerificationEnabledEvent(this.getUserId(), this.getIdentifier(),
-                eventPublisher.getChronographService().currentDateTime()));
-    }
-
-    public void disableVerification(EventPublisher eventPublisher, DisableVerificationCommand command) {
-        if (!this.isVerificationEnabled())
-            return;
-        this.isVerificationEnabled = false;
-        eventPublisher.publish(new VerificationDisabledEvent(this.getUserId(), this.getIdentifier(),
-                eventPublisher.getChronographService().currentDateTime()));
-    }
-
     public void lockUserIdentity(EventPublisher eventPublisher, LockIdentityCommand command) {
         if (this.isLocked())
             return;
@@ -73,6 +57,14 @@ public class UserIdentity extends AggregateRoot {
             return;
         this.isLocked = false;
         eventPublisher.publish(new IdentityUnlockedEvent(this.getUserId(), this.getIdentifier(),
+                eventPublisher.getChronographService().currentDateTime()));
+    }
+
+    public void deactivateUserIdentity(EventPublisher eventPublisher, DeactivateIdentityCommand command) {
+        if (this.isDeactivated())
+            return;
+        this.isDeactivated = true;
+        eventPublisher.publish(new IdentityLockedEvent(this.getUserId(), this.getIdentifier(),
                 eventPublisher.getChronographService().currentDateTime()));
     }
 }

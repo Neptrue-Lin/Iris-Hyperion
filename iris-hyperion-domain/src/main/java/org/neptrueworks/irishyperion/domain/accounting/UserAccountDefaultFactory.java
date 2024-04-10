@@ -14,7 +14,6 @@ public class UserAccountDefaultFactory extends UserAccountFactory {
     public UserAccount create(EventPublisher eventPublisher, UserIdentifier userId, VerificationCredential password) {
         UserAccount userAccount = UserAccount.builder()
                 .identifier(userId)
-                .credential(password)
                 .isCancelled(false)
                 .isLocked(false)
                 .isDeleted(false)

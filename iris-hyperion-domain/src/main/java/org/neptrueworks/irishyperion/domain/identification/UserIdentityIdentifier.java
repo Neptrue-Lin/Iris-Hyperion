@@ -1,6 +1,11 @@
 package org.neptrueworks.irishyperion.domain.identification;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.common.AggregateIdentifier;
 
-public abstract class UserIdentityIdentifier extends AggregateIdentifier<String> {
+@Getter
+@AllArgsConstructor
+public class UserIdentityIdentifier extends AggregateIdentifier<String> {
+    private String identifier;
 }

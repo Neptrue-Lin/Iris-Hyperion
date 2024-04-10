@@ -18,7 +18,6 @@ public class UserIdentityDefaultFactory extends UserIdentityFactory {
                 .userId(userId)
                 .identificationClaim(identificationClaim)
                 .isIdentificationEnabled(false)
-                .isVerificationEnabled(false)
                 .isDeleted(false)
                 .build();
 

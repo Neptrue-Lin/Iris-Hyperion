@@ -1,10 +1,10 @@
 package org.neptrueworks.irishyperion.domain.identification.services;
 
-import org.neptrueworks.irishyperion.domain.identification.PhoneNumber;
+import org.neptrueworks.irishyperion.domain.identification.TelephoneNumber;
 
 public interface ITelephoneNumberLookupService {
-    TelephoneNumberStatus getTelephoneNumberStatus(PhoneNumber phoneNumber);
-    TelephoneServiceProvider getTelephoneServiceProvider(PhoneNumber phoneNumber);
-    boolean isVirtual(PhoneNumber phoneNumber);
-    boolean checkNumberPortability(PhoneNumber phoneNumber);
+    TelephoneNumberStatus getTelephoneNumberStatus(TelephoneNumber telephoneNumber);
+    TelephoneServiceProvider getTelephoneServiceProvider(TelephoneNumber telephoneNumber);
+    boolean isVirtual(TelephoneNumber telephoneNumber);
+    boolean checkNumberPortability(TelephoneNumber telephoneNumber);
 }

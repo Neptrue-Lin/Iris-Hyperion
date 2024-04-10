@@ -6,30 +6,25 @@ import org.neptrueworks.irishyperion.domain.accounting.UserAccountRepository;
 import org.neptrueworks.irishyperion.domain.common.CommandHandler;
 import org.neptrueworks.irishyperion.domain.common.EventPublisher;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentity;
-import org.neptrueworks.irishyperion.domain.identification.events.VerificationFailedEvent;
-import org.neptrueworks.irishyperion.domain.identification.services.IdentificationService;
-import org.neptrueworks.irishyperion.domain.verification.services.VerificationService;
+import org.neptrueworks.irishyperion.domain.identification.UserIdentityRepository;
+import org.neptrueworks.irishyperion.domain.verification.UserVerity;
+import org.neptrueworks.irishyperion.domain.verification.UserVerityRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
 public class SignInAccountCommandHandler extends CommandHandler<SignInAccountCommand> {
-    private final UserAccountRepository repository;
-    private final IdentificationService identificationService;
-    private final VerificationService verificationService;
+    private final UserAccountRepository accountRepository;
+    private final UserIdentityRepository identityRepository;
+    private final UserVerityRepository verityRepository;
 
     @Override
     public void handle(EventPublisher eventPublisher, SignInAccountCommand command) {
-        UserIdentity userIdentity = this.identificationService.identify(command.getIdentificationClaim());
-        boolean isVerified = this.verificationService.verify(userIdentity, command.getVerificationCredential());
-        if (!isVerified) {
-            eventPublisher.publish(new VerificationFailedEvent(userIdentity.getUserId(),
-                    command.getIdentificationClaim(), eventPublisher.getChronographService().currentDateTime()));
-            return;
-        }
-
-        UserAccount userAccount = this.repository.fetchByIdentifierOrError(userIdentity.getUserId());
+        UserIdentity userIdentity = this.identityRepository.fetchByIdentificationClaimOrError(command.getIdentificationClaim());
+        UserVerity userVerity = this.verityRepository.fetchByIdentityIdentifierOrError(userIdentity.getIdentifier());
+        userVerity.verifyCredential(eventPublisher, command.getVerificationCredential());
+        UserAccount userAccount = this.accountRepository.fetchByIdentifierOrError(userIdentity.getUserId());
         userAccount.signInAccount(eventPublisher, command);
-        this.repository.save(userAccount);
+        this.accountRepository.save(userAccount);
     }
 }

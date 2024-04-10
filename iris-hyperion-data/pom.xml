@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.neptrueworks</groupId>
         <artifactId>iris-hyperion</artifactId>
-        <version>0.2.0-SNAPSHOT</version>
+        <version>0.3.0-SNAPSHOT</version>
     </parent>
     <artifactId>iris-hyperion-data</artifactId>
     <version>${data.version}</version>
@@ -80,6 +80,10 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.neptrueworks</groupId>
+            <artifactId>iris-hyperion-domain</artifactId>
         </dependency>
     </dependencies>
 

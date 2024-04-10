@@ -3,10 +3,10 @@ package org.neptrueworks.irishyperion.domain.identification.exceptions;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.common.DomainException;
-import org.neptrueworks.irishyperion.domain.identification.PhoneNumber;
+import org.neptrueworks.irishyperion.domain.identification.TelephoneNumber;
 
 @Getter
 @AllArgsConstructor
 public class TelephoneServiceProviderNotFoundException extends DomainException {
-    private final PhoneNumber phoneNumber;
+    private final TelephoneNumber telephoneNumber;
 }

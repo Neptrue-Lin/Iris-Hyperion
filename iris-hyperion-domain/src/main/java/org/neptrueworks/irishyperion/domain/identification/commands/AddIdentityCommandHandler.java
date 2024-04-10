@@ -11,14 +11,13 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class AddIdentityCommandHandler extends CommandHandler<AddIdentityCommand> {
-
     private final UserIdentityRepository repository;
     private final UserIdentityFactory userIdentityFactory;
 
     @Override
     public void handle(EventPublisher eventPublisher, AddIdentityCommand command) {
         UserIdentity userIdentity = this.userIdentityFactory.create(eventPublisher, command.getUserId(),
-                command.getIdentificationClaim(), command.getVerificationCredential());
+                command.getIdentificationClaim());
         this.repository.save(userIdentity);
     }
 }
