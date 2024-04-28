@@ -20,9 +20,9 @@ public class SignInAccountCommandHandler extends CommandHandler<SignInAccountCom
 
     @Override
     public void handle(EventPublisher eventPublisher, SignInAccountCommand command) {
-        UserIdentity userIdentity = this.identityRepository.fetchByIdentificationClaimOrError(command.getIdentificationClaim());
+        UserIdentity userIdentity = this.identityRepository.fetchByIdentificationClaimOrError(command.identificationClaim());
         UserVerity userVerity = this.verityRepository.fetchByIdentityIdentifierOrError(userIdentity.getIdentifier());
-        userVerity.verifyCredential(eventPublisher, command.getVerificationCredential());
+        userVerity.verifyCredential(eventPublisher, command.verificationCredential());
         UserAccount userAccount = this.accountRepository.fetchByIdentifierOrError(userIdentity.getUserId());
         userAccount.signInAccount(eventPublisher, command);
         this.accountRepository.save(userAccount);

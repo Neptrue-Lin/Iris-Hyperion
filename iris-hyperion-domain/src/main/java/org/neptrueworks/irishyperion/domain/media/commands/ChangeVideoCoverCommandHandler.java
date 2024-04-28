@@ -14,7 +14,7 @@ public class ChangeVideoCoverCommandHandler extends CommandHandler<ChangeVideoCo
 
     @Override
     public void handle(EventPublisher eventPublisher, ChangeVideoCoverCommand command) {
-        VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.getVideo());
+        VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.video());
         videoProfile.changeCover(eventPublisher, command);
         this.repository.save(videoProfile);
     }

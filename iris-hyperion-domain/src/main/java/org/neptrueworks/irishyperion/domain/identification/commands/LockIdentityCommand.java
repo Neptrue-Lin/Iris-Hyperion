@@ -1,12 +1,7 @@
 package org.neptrueworks.irishyperion.domain.identification.commands;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.common.Command;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentityIdentifier;
 
-@Getter
-@AllArgsConstructor
-public class LockIdentityCommand extends Command {
-    private final UserIdentityIdentifier identityIdentifier;
+public record LockIdentityCommand(UserIdentityIdentifier identityIdentifier) implements Command {
 }

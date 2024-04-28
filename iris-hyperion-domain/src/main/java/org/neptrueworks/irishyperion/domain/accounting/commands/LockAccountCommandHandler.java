@@ -14,7 +14,7 @@ public class LockAccountCommandHandler extends CommandHandler<LockAccountCommand
 
     @Override
     public void handle(EventPublisher eventPublisher, LockAccountCommand command) {
-        UserAccount userAccount = this.repository.fetchByIdentifierOrError(command.getUserId());
+        UserAccount userAccount = this.repository.fetchByIdentifierOrError(command.userId());
         userAccount.lockAccount(eventPublisher, command);
         this.repository.save(userAccount);
     }

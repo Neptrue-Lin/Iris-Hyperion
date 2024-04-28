@@ -14,7 +14,7 @@ public class RemoveVideoCommandHandler extends CommandHandler<RemoveVideoCommand
 
     @Override
     public void handle(EventPublisher eventPublisher, RemoveVideoCommand command) {
-        VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.getVideo());
+        VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.video());
         videoProfile.removeVideo(eventPublisher, command);
         this.repository.save(videoProfile);
     }

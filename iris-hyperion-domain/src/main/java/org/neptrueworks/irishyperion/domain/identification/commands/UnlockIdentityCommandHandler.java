@@ -13,7 +13,7 @@ public class UnlockIdentityCommandHandler extends CommandHandler<UnlockIdentityC
     private final UserIdentityRepository repository;
 
     public void handle(EventPublisher eventPublisher, UnlockIdentityCommand command) {
-        UserIdentity userIdentity = this.repository.fetchByIdentifierOrError(command.getIdentityIdentifier());
+        UserIdentity userIdentity = this.repository.fetchByIdentifierOrError(command.identityIdentifier());
         userIdentity.unlockUserIdentity(eventPublisher, command);
         this.repository.save(userIdentity);
     }

@@ -13,7 +13,7 @@ public class RegisterAccountCommandHandler extends CommandHandler<RegisterAccoun
 
     @Override
     public void handle(EventPublisher eventPublisher, RegisterAccountCommand command) {
-        this.userFacadeFactory.create(eventPublisher, command.getIdentificationClaim(),
-                command.getVerificationCredential(), command.getUsername());
+        this.userFacadeFactory.create(eventPublisher, command.identificationClaim(),
+                command.verificationCredential(), command.username());
     }
 }

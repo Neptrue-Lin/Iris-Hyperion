@@ -16,8 +16,8 @@ public class AddVerityCommandHandler extends CommandHandler<AddVerityCommand> {
 
     @Override
     public void handle(EventPublisher eventPublisher, AddVerityCommand command) {
-        UserVerity userVerity = this.userVerityFactory.create(eventPublisher, command.getUserId(),
-                command.getUserIdentityIdentifier(), command.getVerificationCredential());
+        UserVerity userVerity = this.userVerityFactory.create(eventPublisher, command.userId(),
+                command.userIdentityIdentifier(), command.verificationCredential());
         this.repository.save(userVerity);
     }
 }

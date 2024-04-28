@@ -14,7 +14,7 @@ public class DeleteAccountCommandHandler extends CommandHandler<DeleteAccountCom
 
     @Override
     public void handle(EventPublisher eventPublisher, DeleteAccountCommand command) {
-        UserAccount userAccount = this.repository.fetchByIdentifierOrError(command.getUserId());
+        UserAccount userAccount = this.repository.fetchByIdentifierOrError(command.userId());
         userAccount.deleteAccount(eventPublisher, command);
         this.repository.save(userAccount);
     }

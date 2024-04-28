@@ -14,7 +14,7 @@ public class DeleteCommentCommandHandler extends CommandHandler<DeleteCommentCom
 
     @Override
     public void handle(EventPublisher eventPublisher, DeleteCommentCommand command) {
-        CommentProfile commentProfile = this.repository.fetchByIdentifierOrError(command.getCommentId());
+        CommentProfile commentProfile = this.repository.fetchByIdentifierOrError(command.commentId());
         commentProfile.deleteComment(eventPublisher, command);
         this.repository.save(commentProfile);
     }

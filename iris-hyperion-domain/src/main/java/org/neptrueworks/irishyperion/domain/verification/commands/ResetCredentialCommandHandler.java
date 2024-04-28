@@ -14,7 +14,7 @@ public class ResetCredentialCommandHandler extends CommandHandler<ResetCredentia
 
     @Override
     public void handle(EventPublisher eventPublisher, ResetCredentialCommand command) {
-        UserVerity userVerity = this.repository.fetchByIdentifierOrError(command.getIdentifier());
+        UserVerity userVerity = this.repository.fetchByIdentifierOrError(command.identifier());
         userVerity.resetCredential(eventPublisher, command);
         this.repository.save(userVerity);
     }

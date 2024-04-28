@@ -15,7 +15,7 @@ public class UnfollowUserCommandHandler extends CommandHandler<UnfollowUserComma
     @Override
     public void handle(EventPublisher eventPublisher, UnfollowUserCommand command) {
         SocialEngagement socialEngagement = this.repository.fetchByIdentifierOrError(
-                command.getUnfollower(), command.getUnfollowee());
+                command.unfollower(), command.unfollowee());
         socialEngagement.unfollowUser(eventPublisher, command);
         this.repository.save(socialEngagement);
     }

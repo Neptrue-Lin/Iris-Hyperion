@@ -14,7 +14,7 @@ public class SignOutAccountCommandHandler extends CommandHandler<SignOutAccountC
 
     @Override
     public void handle(EventPublisher eventPublisher, SignOutAccountCommand command) {
-        UserAccount userAccount = this.repository.fetchByIdentifierOrError(command.getUserId());
+        UserAccount userAccount = this.repository.fetchByIdentifierOrError(command.userId());
         userAccount.signOutAccount(eventPublisher, command);
         this.repository.save(userAccount);
     }

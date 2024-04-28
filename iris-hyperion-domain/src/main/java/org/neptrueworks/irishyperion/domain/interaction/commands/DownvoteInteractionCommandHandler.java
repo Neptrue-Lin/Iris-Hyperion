@@ -14,7 +14,7 @@ public class DownvoteInteractionCommandHandler extends CommandHandler<DownvoteIn
 
     @Override
     public void handle(EventPublisher eventPublisher, DownvoteInteractionCommand command) {
-        InteractionMetric interactionMetric = this.repository.fetchByIdentifierOrError(command.getInteractionId(), command.getUserId());
+        InteractionMetric interactionMetric = this.repository.fetchByIdentifierOrError(command.interactionId(), command.userId());
         interactionMetric.downvoteInteraction(eventPublisher, command);
         this.repository.save(interactionMetric);
     }

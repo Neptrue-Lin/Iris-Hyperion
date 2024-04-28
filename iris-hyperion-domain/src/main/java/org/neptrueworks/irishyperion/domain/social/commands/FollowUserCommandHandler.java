@@ -14,8 +14,8 @@ public class FollowUserCommandHandler extends CommandHandler<FollowUserCommand> 
 
     @Override
     public void handle(EventPublisher eventPublisher, FollowUserCommand command) {
-        SocialEngagement socialEngagement = this.repository.fetchByIdentifierOrError(command.getFollower(),
-                command.getFollowee());
+        SocialEngagement socialEngagement = this.repository.fetchByIdentifierOrError(command.follower(),
+                command.followee());
         socialEngagement.followUser(eventPublisher, command);
         this.repository.save(socialEngagement);
     }

@@ -13,7 +13,7 @@ public class UserVerityDefaultFactory implements UserVerityFactory {
     public UserVerity create(EventPublisher eventPublisher, UserIdentifier userId, UserIdentityIdentifier userIdentityIdentifier, VerificationCredential verificationCredential) {
         UserVerity userVerity = UserVerity.builder()
                 .identifier(this.identifierGenerator.nextIdentifier())
-                .userIdentityIdentifier(userIdentityIdentifier)
+                .identityIdentifier(userIdentityIdentifier)
                 .userId(userId)
                 .isVerificationEnabled(false)
                 .isLocked(false)
@@ -22,7 +22,7 @@ public class UserVerityDefaultFactory implements UserVerityFactory {
                 .isDeleted(false)
                 .build();
         eventPublisher.publish(new VerityAddedEvent(userVerity.getIdentifier(), userVerity.getUserId(),
-                userVerity.getUserIdentityIdentifier(), userVerity.getCredential(),
+                userVerity.getIdentityIdentifier(), userVerity.getCredential(),
                 eventPublisher.getChronographService().currentDateTime()));
         return userVerity;
     }

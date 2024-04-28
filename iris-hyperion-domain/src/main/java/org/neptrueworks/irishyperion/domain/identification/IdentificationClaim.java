@@ -2,6 +2,6 @@ package org.neptrueworks.irishyperion.domain.identification;
 
 import java.io.Serializable;
 
-public abstract class IdentificationClaim implements Serializable {
-    public abstract String getClaim();
+public interface IdentificationClaim extends Serializable {
+    String claim();
 }

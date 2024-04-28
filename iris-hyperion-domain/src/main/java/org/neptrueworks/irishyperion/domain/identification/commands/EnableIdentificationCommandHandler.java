@@ -14,7 +14,7 @@ public class EnableIdentificationCommandHandler extends CommandHandler<EnableIde
 
     @Override
     public void handle(EventPublisher eventPublisher, EnableIdentificationCommand command) {
-        UserIdentity userIdentity = this.repository.fetchByIdentifierOrError(command.getIdentifier());
+        UserIdentity userIdentity = this.repository.fetchByIdentifierOrError(command.identifier());
         userIdentity.enableIdentification(eventPublisher, command);
         this.repository.save(userIdentity);
     }

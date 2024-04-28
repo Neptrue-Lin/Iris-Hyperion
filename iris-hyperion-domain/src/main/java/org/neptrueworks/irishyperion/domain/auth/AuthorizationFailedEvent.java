@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
-public class AuthorizationFailedEvent extends DomainEvent {
+public class AuthorizationFailedEvent implements DomainEvent {
     private final AuthorizationIdentifier identifier;
     private final LocalDateTime failedAt;
 }

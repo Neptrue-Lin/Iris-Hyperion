@@ -14,7 +14,7 @@ public class PublishVideoCommandHandler extends CommandHandler<PublishVideoComma
 
     @Override
     public void handle(EventPublisher eventPublisher, PublishVideoCommand command) {
-        VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.getVideo());
+        VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.video());
         videoProfile.publishVideo(eventPublisher, command);
         this.repository.save(videoProfile);
     }

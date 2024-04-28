@@ -14,7 +14,7 @@ public class DisableVerificationCommandHandler extends CommandHandler<DisableVer
 
     @Override
     public void handle(EventPublisher eventPublisher, DisableVerificationCommand command) {
-        UserVerity userVerity = this.repository.fetchByIdentifierOrError(command.getIdentifier());
+        UserVerity userVerity = this.repository.fetchByIdentifierOrError(command.identifier());
         userVerity.disableVerification(eventPublisher, command);
         this.repository.save(userVerity);
     }

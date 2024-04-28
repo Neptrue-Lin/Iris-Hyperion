@@ -16,8 +16,8 @@ public class AddIdentityCommandHandler extends CommandHandler<AddIdentityCommand
 
     @Override
     public void handle(EventPublisher eventPublisher, AddIdentityCommand command) {
-        UserIdentity userIdentity = this.userIdentityFactory.create(eventPublisher, command.getUserId(),
-                command.getIdentificationClaim());
+        UserIdentity userIdentity = this.userIdentityFactory.create(eventPublisher, command.userId(),
+                command.identificationClaim());
         this.repository.save(userIdentity);
     }
 }

@@ -1,17 +1,11 @@
 package org.neptrueworks.irishyperion.domain.verification.events;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.common.DomainEvent;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 import org.neptrueworks.irishyperion.domain.verification.UserVerityIdentifier;
 
 import java.time.LocalDateTime;
 
-@Getter
-@AllArgsConstructor
-public class CredentialIncorrectEvent extends DomainEvent {
-    private final UserIdentifier userId;
-    private final UserVerityIdentifier identifier;
-    private final LocalDateTime verifiedAt;
+public record CredentialIncorrectEvent(UserIdentifier userId, UserVerityIdentifier identifier,
+                                       LocalDateTime verifiedAt) implements DomainEvent {
 }

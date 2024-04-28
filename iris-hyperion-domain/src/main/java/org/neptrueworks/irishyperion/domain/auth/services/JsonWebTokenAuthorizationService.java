@@ -20,7 +20,7 @@ public class JsonWebTokenAuthorizationService extends AuthorizationService {
         //TODO JWT expiration issuer audience
         JsonWebTokenPayload payload = JsonWebTokenPayload.builder()
                 .id(identifier.getIdentifier())
-                .subject(userId.getIdentifier())
+                .subject(userId.identifier())
                 .notBefore(this.calendarService.currentDate())
                 .issuedAt(this.calendarService.currentDate())
                 .build();

@@ -13,7 +13,7 @@ public class DeactivateIdentityCommandHandler extends CommandHandler<DeactivateI
     private final UserIdentityRepository repository;
 
     public void handle(EventPublisher eventPublisher, DeactivateIdentityCommand command) {
-        UserIdentity userIdentity = this.repository.fetchByIdentifierOrError(command.getIdentityIdentifier());
+        UserIdentity userIdentity = this.repository.fetchByIdentifierOrError(command.identityIdentifier());
         userIdentity.deactivateUserIdentity(eventPublisher, command);
         this.repository.save(userIdentity);
     }

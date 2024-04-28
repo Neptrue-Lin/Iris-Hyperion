@@ -14,7 +14,7 @@ public class RemoveVerityCommandHandler extends CommandHandler<RemoveVerityComma
 
     @Override
     public void handle(EventPublisher eventPublisher, RemoveVerityCommand command) {
-        UserVerity userVerity = this.repository.fetchByIdentifierOrError(command.getIdentifier());
+        UserVerity userVerity = this.repository.fetchByIdentifierOrError(command.identifier());
         userVerity.removeUserVerity(eventPublisher, command);
         this.repository.save(userVerity);
     }

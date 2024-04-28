@@ -13,7 +13,7 @@ public class UnlockVerityCommandHandler extends CommandHandler<UnlockVerityComma
     private final UserVerityRepository repository;
 
     public void handle(EventPublisher eventPublisher, UnlockVerityCommand command) {
-        UserVerity userVerity = this.repository.fetchByIdentityIdentifierOrError(command.getIdentityIdentifier());
+        UserVerity userVerity = this.repository.fetchByIdentityIdentifierOrError(command.identityIdentifier());
         userVerity.unlockUserVerity(eventPublisher, command);
         this.repository.save(userVerity);
     }

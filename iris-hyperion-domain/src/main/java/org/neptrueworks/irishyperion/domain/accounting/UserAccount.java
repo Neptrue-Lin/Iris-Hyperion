@@ -81,7 +81,7 @@ public class UserAccount extends AggregateRoot {
             return;
 
         this.isSignedIn = true;
-        eventPublisher.publish(new AccountSignedInEvent(this.getIdentifier(), command.getIdentificationClaim(),
+        eventPublisher.publish(new AccountSignedInEvent(this.getIdentifier(), command.identificationClaim(),
                 eventPublisher.getChronographService().currentDateTime()));
     }
 

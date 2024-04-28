@@ -45,52 +45,52 @@ public class VideoProfile extends AggregateRoot {
     }
 
     public void changeTitle(EventPublisher eventPublisher, ChangeVideoTitleCommand command) {
-        this.title = command.getTitle();
+        this.title = command.title();
         eventPublisher.publish(new VideoTitleChangedEvent(this.getVideoProfileId(), this.getAuthor(),
                 eventPublisher.getChronographService().currentDateTime()));
     }
 
     public void changeCover(EventPublisher eventPublisher, ChangeVideoCoverCommand command) {
-        this.cover = command.getCover();
+        this.cover = command.cover();
         eventPublisher.publish(new VideoCoverChangedEvent(this.getVideoProfileId(), this.getAuthor(),
                 eventPublisher.getChronographService().currentDateTime()));
     }
 
     public void changeDescription(EventPublisher eventPublisher, ChangeVideoDescriptionCommand command) {
-        this.description = command.getDescription();
+        this.description = command.description();
         eventPublisher.publish(new VideoIntroductionChangedEvent(this.getVideoProfileId(),
                 this.getAuthor(), eventPublisher.getChronographService().currentDateTime()));
     }
 
     public void addCreator(EventPublisher eventPublisher, AddVideoCreatorCommand command) {
-        if (this.getCreators().contains(command.getCreator()))
+        if (this.getCreators().contains(command.creator()))
             return;
-        this.creators.add(command.getCreator());
+        this.creators.add(command.creator());
         eventPublisher.publish(new VideoCreatorAddedEvent(this.getVideoProfileId(), this.getAuthor(),
-                command.getAuthor(), eventPublisher.getChronographService().currentDateTime()));
+                command.author(), eventPublisher.getChronographService().currentDateTime()));
     }
 
     public void removeCreator(EventPublisher eventPublisher, RemoveVideoCreatorCommand command) {
-        if (!this.getCreators().contains(command.getCreator()))
+        if (!this.getCreators().contains(command.creator()))
             return;
-        this.creators.remove(command.getCreator());
-        eventPublisher.publish(new VideoCreatorRemovedEvent(this.getVideoProfileId(), command.getCreator(),
+        this.creators.remove(command.creator());
+        eventPublisher.publish(new VideoCreatorRemovedEvent(this.getVideoProfileId(), command.creator(),
                 this.getAuthor(), eventPublisher.getChronographService().currentDateTime()));
     }
 
     public void attachTag(EventPublisher eventPublisher, AttachVideoTagCommand command) {
-        if (this.getTags().contains(command.getTag()))
+        if (this.getTags().contains(command.tag()))
             return;
-        this.tags.add(command.getTag());
-        eventPublisher.publish(new VideoTagAttachedEvent(this.getVideoProfileId(), command.getTag(),
+        this.tags.add(command.tag());
+        eventPublisher.publish(new VideoTagAttachedEvent(this.getVideoProfileId(), command.tag(),
                 this.getAuthor(), eventPublisher.getChronographService().currentDateTime()));
     }
 
     public void detachTag(EventPublisher eventPublisher, DetachVideoTagCommand command) {
-        if (!this.getTags().contains(command.getTag()))
+        if (!this.getTags().contains(command.tag()))
             return;
-        this.tags.remove(command.getTag());
-        eventPublisher.publish(new VideoTagDetachedEvent(this.getVideoProfileId(), command.getTag(),
+        this.tags.remove(command.tag());
+        eventPublisher.publish(new VideoTagDetachedEvent(this.getVideoProfileId(), command.tag(),
                 this.getAuthor(), eventPublisher.getChronographService().currentDateTime()));
     }
 }

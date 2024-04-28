@@ -14,7 +14,7 @@ public class ChangeUsernameCommandHandler extends CommandHandler<ChangeUsernameC
 
     @Override
     public void handle(EventPublisher eventPublisher, ChangeUsernameCommand command) {
-        UserOutline outline = repository.fetchByIdentifierOrError(command.getUserId());
+        UserOutline outline = repository.fetchByIdentifierOrError(command.userId());
         outline.changeUsername(eventPublisher, command);
         repository.save(outline);
     }

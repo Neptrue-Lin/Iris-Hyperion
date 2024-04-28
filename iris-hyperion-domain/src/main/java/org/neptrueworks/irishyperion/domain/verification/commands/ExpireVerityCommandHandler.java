@@ -13,7 +13,7 @@ public class ExpireVerityCommandHandler extends CommandHandler<ExpireVerityComma
     private final UserVerityRepository repository;
 
     public void handle(EventPublisher eventPublisher, ExpireVerityCommand command) {
-        UserVerity userVerity = this.repository.fetchByIdentityIdentifierOrError(command.getIdentityIdentifier());
+        UserVerity userVerity = this.repository.fetchByIdentityIdentifierOrError(command.identityIdentifier());
         userVerity.expireUserVerity(eventPublisher, command);
         this.repository.save(userVerity);
     }

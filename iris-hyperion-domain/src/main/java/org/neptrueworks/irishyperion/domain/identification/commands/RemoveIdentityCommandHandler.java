@@ -14,7 +14,7 @@ public class RemoveIdentityCommandHandler extends CommandHandler<RemoveIdentityC
 
     @Override
     public void handle(EventPublisher eventPublisher, RemoveIdentityCommand command) {
-        UserIdentity userIdentity = this.repository.fetchByIdentifierOrError(command.getIdentifier());
+        UserIdentity userIdentity = this.repository.fetchByIdentifierOrError(command.identifier());
         userIdentity.removeUserIdentity(eventPublisher, command);
         this.repository.save(userIdentity);
     }

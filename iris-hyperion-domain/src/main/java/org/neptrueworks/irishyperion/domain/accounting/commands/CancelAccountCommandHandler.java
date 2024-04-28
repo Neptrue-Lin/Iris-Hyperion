@@ -14,7 +14,7 @@ public class CancelAccountCommandHandler extends CommandHandler<CancelAccountCom
 
     @Override
     public void handle(EventPublisher eventPublisher, CancelAccountCommand command) {
-        UserAccount userAccount = this.repository.fetchByIdentifierOrError(command.getUserId());
+        UserAccount userAccount = this.repository.fetchByIdentifierOrError(command.userId());
         userAccount.cancelAccount(eventPublisher, command);
         this.repository.save(userAccount);
     }

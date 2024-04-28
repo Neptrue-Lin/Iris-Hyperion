@@ -13,7 +13,7 @@ public class InvalidateVerityCommandHandler extends CommandHandler<InvalidateVer
     private final UserVerityRepository repository;
 
     public void handle(EventPublisher eventPublisher, InvalidateVerityCommand command) {
-        UserVerity userIdentity = this.repository.fetchByIdentifierOrError(command.getIdentifier());
+        UserVerity userIdentity = this.repository.fetchByIdentifierOrError(command.identifier());
         userIdentity.invalidateUserVerity(eventPublisher, command);
         this.repository.save(userIdentity);
     }

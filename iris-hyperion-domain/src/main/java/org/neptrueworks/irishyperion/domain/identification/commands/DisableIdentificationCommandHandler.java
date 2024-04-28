@@ -14,7 +14,7 @@ public class DisableIdentificationCommandHandler extends CommandHandler<DisableI
 
     @Override
     public void handle(EventPublisher eventPublisher, DisableIdentificationCommand command) {
-        UserIdentity userIdentity = this.repository.fetchByIdentifierOrError(command.getIdentifier());
+        UserIdentity userIdentity = this.repository.fetchByIdentifierOrError(command.identifier());
         userIdentity.disableIdentification(eventPublisher,command);
         this.repository.save(userIdentity);
     }

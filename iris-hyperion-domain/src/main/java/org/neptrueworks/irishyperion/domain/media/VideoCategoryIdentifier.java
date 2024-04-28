@@ -2,5 +2,5 @@ package org.neptrueworks.irishyperion.domain.media;
 
 import org.neptrueworks.irishyperion.domain.common.AggregateIdentifier;
 
-public abstract class VideoCategoryIdentifier extends AggregateIdentifier<String> {
+public record VideoCategoryIdentifier(String identifier) implements AggregateIdentifier<String> {
 }

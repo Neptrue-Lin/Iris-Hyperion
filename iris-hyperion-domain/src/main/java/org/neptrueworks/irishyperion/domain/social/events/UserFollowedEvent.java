@@ -1,16 +1,10 @@
 package org.neptrueworks.irishyperion.domain.social.events;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.neptrueworks.irishyperion.domain.common.DomainEvent;
 import org.neptrueworks.irishyperion.domain.identification.UserIdentifier;
 
 import java.time.LocalDateTime;
 
-@Getter
-@AllArgsConstructor
-public class UserFollowedEvent extends DomainEvent {
-    private final UserIdentifier follower;
-    private final UserIdentifier followee;
-    private final LocalDateTime followedAt;
+public record UserFollowedEvent(UserIdentifier follower, UserIdentifier followee,
+                                LocalDateTime followedAt) implements DomainEvent {
 }

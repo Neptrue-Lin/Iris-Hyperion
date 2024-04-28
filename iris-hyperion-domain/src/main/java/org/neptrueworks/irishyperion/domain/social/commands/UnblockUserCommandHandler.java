@@ -14,8 +14,8 @@ public class UnblockUserCommandHandler extends CommandHandler<UnblockUserCommand
 
     @Override
     public void handle(EventPublisher eventPublisher, UnblockUserCommand command) {
-        SocialEngagement socialEngagement = this.repository.fetchByIdentifierOrError(command.getUnblockedBy(),
-                command.getUnblockedUser());
+        SocialEngagement socialEngagement = this.repository.fetchByIdentifierOrError(command.unblockedBy(),
+                command.unblockedUser());
         socialEngagement.unblockUser(eventPublisher, command);
         this.repository.save(socialEngagement);
     }

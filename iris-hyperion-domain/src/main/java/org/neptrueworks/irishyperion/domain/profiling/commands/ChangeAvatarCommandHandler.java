@@ -14,7 +14,7 @@ public class ChangeAvatarCommandHandler extends CommandHandler<ChangeAvatarComma
 
     @Override
     public void handle(EventPublisher eventPublisher, ChangeAvatarCommand command) {
-        UserOutline outline = repository.fetchByIdentifierOrError(command.getUserId());
+        UserOutline outline = repository.fetchByIdentifierOrError(command.userId());
         outline.changeAvatar(eventPublisher, command);
         repository.save(outline);
     }

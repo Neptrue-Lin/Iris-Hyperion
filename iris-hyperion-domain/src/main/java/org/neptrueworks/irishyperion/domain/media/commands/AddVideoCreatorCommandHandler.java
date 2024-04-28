@@ -14,7 +14,7 @@ public class AddVideoCreatorCommandHandler extends CommandHandler<AddVideoCreato
 
     @Override
     public void handle(EventPublisher eventPublisher, AddVideoCreatorCommand command) {
-        VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.getVideo());
+        VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.video());
         videoProfile.addCreator(eventPublisher, command);
         this.repository.save(videoProfile);
     }

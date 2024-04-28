@@ -14,7 +14,7 @@ public class DetachVideoTagCommandHandler extends CommandHandler<DetachVideoTagC
 
     @Override
     public void handle(EventPublisher eventPublisher, DetachVideoTagCommand command) {
-        VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.getVideo());
+        VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.video());
         videoProfile.detachTag(eventPublisher, command);
         this.repository.save(videoProfile);
     }

@@ -37,6 +37,5 @@ public class UserFacadeDefaultFactory {
 
         UserOutline outline = this.outlineFactory.create(eventPublisher, userId, username);
         this.outlineRepository.save(outline);
-
     }
 }

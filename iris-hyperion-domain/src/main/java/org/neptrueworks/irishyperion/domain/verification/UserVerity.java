@@ -32,7 +32,7 @@ public class UserVerity extends AggregateRoot {
     private boolean isDeleted;
 
     public void resetCredential(EventPublisher eventPublisher, ResetCredentialCommand command) {
-        this.credential = command.getCredential();
+        this.credential = command.credential();
         eventPublisher.publish(new CredentialResetEvent(this.getUserId(), this.getIdentityIdentifier(),
                 this.getIdentifier(), this.getCredential(), eventPublisher.getChronographService().currentDateTime()));
     }

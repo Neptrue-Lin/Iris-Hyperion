@@ -14,7 +14,7 @@ public class RestoreAccountCommandHandler extends CommandHandler<RestoreAccountC
 
     @Override
     public void handle(EventPublisher eventPublisher, RestoreAccountCommand command) {
-        UserAccount userAccount = this.repository.fetchByIdentifierOrError(command.getUserId());
+        UserAccount userAccount = this.repository.fetchByIdentifierOrError(command.userId());
         userAccount.restoreAccount(eventPublisher,command);
         this.repository.save(userAccount);
     }

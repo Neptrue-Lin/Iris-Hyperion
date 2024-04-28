@@ -1,4 +1,4 @@
 package org.neptrueworks.irishyperion.domain.interaction;
 
-public abstract class ReviewIdentifier extends InteractionIdentifier {
+public record ReviewIdentifier(String identifier) implements InteractionIdentifier {
 }

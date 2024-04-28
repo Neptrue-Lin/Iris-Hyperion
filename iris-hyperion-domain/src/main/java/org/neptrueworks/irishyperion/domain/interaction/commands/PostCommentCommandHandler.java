@@ -16,8 +16,8 @@ public class PostCommentCommandHandler extends CommandHandler<PostCommentCommand
 
     @Override
     public void handle(EventPublisher eventPublisher, PostCommentCommand command) {
-        CommentProfile commentProfile = this.commentProfileFactory.create(eventPublisher, command.getUserId(),
-                command.getPostedTo(), command.getContent());
+        CommentProfile commentProfile = this.commentProfileFactory.create(eventPublisher, command.userId(),
+                command.postedTo(), command.content());
         this.repository.save(commentProfile);
     }
 }

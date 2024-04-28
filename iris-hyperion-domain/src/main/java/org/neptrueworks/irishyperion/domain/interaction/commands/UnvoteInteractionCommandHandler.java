@@ -14,7 +14,7 @@ public class UnvoteInteractionCommandHandler extends CommandHandler<UnvoteIntera
 
     @Override
     public void handle(EventPublisher eventPublisher, UnvoteInteractionCommand command) {
-        InteractionMetric interactionMetric = this.repository.fetchByIdentifierOrError(command.getInteractionId(), command.getUserId());
+        InteractionMetric interactionMetric = this.repository.fetchByIdentifierOrError(command.interactionId(), command.userId());
         interactionMetric.unvoteInteraction(eventPublisher, command);
         this.repository.save(interactionMetric);
     }

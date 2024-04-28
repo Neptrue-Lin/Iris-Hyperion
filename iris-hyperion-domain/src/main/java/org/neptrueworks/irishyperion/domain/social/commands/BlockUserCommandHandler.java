@@ -15,7 +15,7 @@ public class BlockUserCommandHandler extends CommandHandler<BlockUserCommand> {
     @Override
     public void handle(EventPublisher eventPublisher, BlockUserCommand command) {
         SocialEngagement socialEngagement = this.repository.fetchByIdentifierOrError(
-                command.getBlockedBy(), command.getBlockedUser());
+                command.blockedBy(), command.blockedUser());
         socialEngagement.blockUser(eventPublisher, command);
         this.repository.save(socialEngagement);
     }

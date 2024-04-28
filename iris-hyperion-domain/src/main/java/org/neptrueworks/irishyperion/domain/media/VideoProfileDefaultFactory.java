@@ -16,13 +16,13 @@ public class VideoProfileDefaultFactory extends VideoProfileFactory {
     public VideoProfile create(EventPublisher eventPublisher, PostVideoCommand command) {
         VideoProfile videoProfile = VideoProfile.builder()
                 .videoProfileId(this.identifierGenerator.nextIdentifier())
-                .author(command.getAuthor())
-                .title(command.getTitle())
-                .cover(command.getCover())
-                .tags(command.getTags())
-                .description(command.getDescription())
-                .creators(command.getCreators())
-                .content(command.getContent())
+                .author(command.author())
+                .title(command.title())
+                .cover(command.cover())
+                .tags(command.tags())
+                .description(command.description())
+                .creators(command.creators())
+                .content(command.content())
                 .build();
         eventPublisher.publish(new VideoPostedEvent(videoProfile.getAuthor(), eventPublisher.getChronographService().currentDateTime()));
         return videoProfile;

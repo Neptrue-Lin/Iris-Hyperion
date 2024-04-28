@@ -14,8 +14,8 @@ public class AttachVideoTagCommandHandler extends CommandHandler<AttachVideoTagC
 
     @Override
     public void handle(EventPublisher eventPublisher, AttachVideoTagCommand command) {
-        VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.getVideo());
-        if (videoProfile.getTags().contains(command.getTag()))
+        VideoProfile videoProfile = this.repository.fetchByIdentifierOrError(command.video());
+        if (videoProfile.getTags().contains(command.tag()))
             return;
         videoProfile.attachTag(eventPublisher, command);
         this.repository.save(videoProfile);

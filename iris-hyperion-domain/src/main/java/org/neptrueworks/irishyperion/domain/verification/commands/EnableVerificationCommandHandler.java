@@ -14,7 +14,7 @@ public class EnableVerificationCommandHandler extends CommandHandler<EnableVerif
 
     @Override
     public void handle(EventPublisher eventPublisher, EnableVerificationCommand command) {
-        UserVerity userVerity = this.repository.fetchByIdentifierOrError(command.getIdentifier());
+        UserVerity userVerity = this.repository.fetchByIdentifierOrError(command.identifier());
         userVerity.enableVerification(eventPublisher, command);
         this.repository.save(userVerity);
     }
